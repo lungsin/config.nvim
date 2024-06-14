@@ -77,6 +77,19 @@ return {
           },
         },
       },
+      defaults = {
+        path_display = { 'filename_first' },
+        mappings = {
+          i = {
+            ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
+          },
+        },
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+      },
     })
 
     -- Enable telescope extensions, if they are installed
