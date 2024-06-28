@@ -3,14 +3,25 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    'nvim-treesitter/nvim-treesitter-context' ,
+    { 'nvim-treesitter/nvim-treesitter-context', opts = { multiline_threshold = 1 } },
   },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
   opts = {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript',
-        'vimdoc', 'vim' },
+    ensure_installed = {
+      'c',
+      'cpp',
+      'go',
+      'lua',
+      'python',
+      'rust',
+      'tsx',
+      'javascript',
+      'typescript',
+      'vimdoc',
+      'vim',
+    },
 
     -- Autoinstall languages that are not installed
     auto_install = true,
@@ -29,7 +40,7 @@ return {
     textobjects = {
       select = {
         enable = true,
-        lookahead = true,     -- Automatically jump forward to textobj, similar to targets.vim
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
           ['aa'] = '@parameter.outer',
@@ -42,7 +53,7 @@ return {
       },
       move = {
         enable = true,
-        set_jumps = true,     -- whether to set jumps in the jumplist
+        set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
           [']m'] = '@function.outer',
           [']]'] = '@class.outer',
@@ -70,5 +81,5 @@ return {
         },
       },
     },
-  }
+  },
 }

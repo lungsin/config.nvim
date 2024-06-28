@@ -18,6 +18,7 @@ return { -- Autoformat
       typescriptreact = { { 'prettierd', 'prettier' } },
       javascriptreact = { { 'prettierd', 'prettier' } },
       json = { { 'prettierd', 'prettier' } },
+      rust = { 'rustfmt' },
     },
   },
 }
