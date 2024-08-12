@@ -21,7 +21,7 @@ return {
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
 
     -- Browse the current buffer's undo tree in a text-based tree representation using telescope.
     'debugloop/telescope-undo.nvim',
@@ -100,20 +100,20 @@ return {
 
     -- See `:help telescope.builtin`
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
-    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
-    vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]ind [S]elect Telescope' })
-    vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
-    vim.keymap.set('n', '<leader>fgr', builtin.live_grep, { desc = '[F]ind by [Gr]ep' })
-    vim.keymap.set('n', '<leader>fgi', builtin.git_files, { desc = '[F]ind [Gi]t Files' })
-    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
-    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
-    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })
+    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Find Keymaps' })
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
+    vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = 'Find Telescope builtin' })
+    vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Find word under the cursor' })
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find and get Live Results' })
+    vim.keymap.set('n', '<leader>fG', builtin.git_files, { desc = 'Find git files' })
+    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
+    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Resume last search session' })
+    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Find Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
     -- Telescope undo extension
-    vim.keymap.set('n', '<leader>fu', '<cmd>Telescope undo<cr>', { desc = '[F]ind [U]ndo tree' })
+    vim.keymap.set('n', '<leader>fu', '<cmd>Telescope undo<cr>', { desc = 'Find Undo tree' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
@@ -131,11 +131,11 @@ return {
         grep_open_files = true,
         prompt_title = 'Live Grep in Open Files',
       })
-    end, { desc = '[F]ind [/] in Open Files' })
+    end, { desc = 'Find [/] in Open Files' })
 
     -- Shortcut for searching your neovim configuration files
     vim.keymap.set('n', '<leader>fn', function()
       builtin.find_files({ cwd = vim.fn.stdpath('config') })
-    end, { desc = '[F]ind [N]eovim files' })
+    end, { desc = 'Find Neovim files' })
   end,
 }
