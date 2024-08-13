@@ -3,7 +3,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Specify that 
+-- Custom config to indicate that nerd font is installed
 vim.g.have_nerd_font = true
+-- Custom config to indicate which picker to choose
+---@type "telescope" | "fzf-lua"
+vim.g.picker = "telescope"
 
 require('klungs')

@@ -3,7 +3,7 @@ return {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
   -- branch = '0.1.x',
-  -- enabled = false,
+  enabled = vim.g.picker == "telescope",
   dependencies = {
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for install instructions
@@ -22,46 +22,11 @@ return {
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
 
     -- Browse the current buffer's undo tree in a text-based tree representation using telescope.
     'debugloop/telescope-undo.nvim',
   },
-  -- init = function()
-  --   -- Autocommand to open telescope when entering nvim
-  --   -- TODO: Organize this autocommand using the lazy.nvim config or in after/plugin folder.
-  --   --
-  --   -- clear FileExplorer appropriately to prevent netrw from launching on folders
-  --   -- netrw may or may not be loaded before telescope-find-files
-  --   -- conceptual credits to nvim-tree and telescope-file-browser
-  --   vim.api.nvim_create_autocmd('VimEnter', {
-  --     pattern = '*',
-  --     once = true,
-  --     callback = function()
-  --       pcall(vim.api.nvim_clear_autocmds, { group = 'FileExplorer' })
-  --     end,
-  --   })
-
-  --   local find_files_hijack_netrw = vim.api.nvim_create_augroup('find_files_hijack_netrw', { clear = true })
-  --   vim.api.nvim_create_autocmd('BufEnter', {
-  --     group = find_files_hijack_netrw,
-  --     pattern = '*',
-  --     callback = function()
-  --       vim.schedule(function()
-  --         -- Early return if netrw or not a directory
-  --         if vim.bo[0].filetype == 'netrw' or vim.fn.isdirectory(vim.fn.expand('%:p')) == 0 then
-  --           return
-  --         end
-
-  --         vim.api.nvim_buf_set_option(0, 'bufhidden', 'wipe')
-
-  --         require('telescope.builtin').find_files({
-  --           cwd = vim.fn.expand('%:p:h'),
-  --         })
-  --       end)
-  --     end,
-  --   })
-  -- end,
   config = function()
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
@@ -85,7 +50,6 @@ return {
             ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
           },
         },
-        file_ignore_patterns = { 'node_modules', '.git/' },
       },
       pickers = {
         find_files = {
