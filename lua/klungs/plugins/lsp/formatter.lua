@@ -1,10 +1,10 @@
 return { -- Autoformat
   'stevearc/conform.nvim',
   opts = {
-    notify_on_error = false,
+    notify_on_error = true,
     format_on_save = {
       timeout_ms = 500,
-      lsp_fallback = true,
+      lsp_format = 'fallback',
     },
     formatters_by_ft = {
       lua = { 'stylua' },
@@ -13,11 +13,11 @@ return { -- Autoformat
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
-      javascript = { { 'prettierd', 'prettier' } },
-      typescript = { { 'prettierd', 'prettier' } },
-      typescriptreact = { { 'prettierd', 'prettier' } },
-      javascriptreact = { { 'prettierd', 'prettier' } },
-      json = { { 'prettierd', 'prettier' } },
+      javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      typescript = { 'prettierd', 'prettier', stop_after_first = true },
+      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      json = { 'prettierd', 'prettier', stop_after_first = true },
       rust = { 'rustfmt' },
     },
   },

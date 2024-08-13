@@ -154,6 +154,7 @@ return { -- LSP Configuration & Plugins
       'stylua', -- Used to format lua code
       'clang-format',
       'prettierd',
+      'eslint-lsp',
       'tailwindcss-language-server',
     })
     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
