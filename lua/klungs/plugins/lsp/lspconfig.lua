@@ -92,6 +92,13 @@ return { -- LSP Configuration & Plugins
             callback = vim.lsp.buf.clear_references,
           })
         end
+
+        -- if client and client.name == 'eslint' then
+        --   vim.api.nvim_create_autocmd('BufWritePre', {
+        --     buffer = event.buf,
+        --     command = 'EslintFixAll',
+        --   })
+        -- end
       end,
     })
 
@@ -123,6 +130,19 @@ return { -- LSP Configuration & Plugins
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {},
+      eslint = {
+        settings = {
+          codeActionOnSave = {
+            enable = false,
+          },
+        },
+        -- on_attach = function(client, bufnr)
+        --   vim.api.nvim_create_autocmd('BufWritePre', {
+        --     buffer = bufnr,
+        --     command = 'EslintFixAll',
+        --   })
+        -- end,
+      },
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
@@ -170,6 +190,15 @@ return { -- LSP Configuration & Plugins
           require('lspconfig')[server_name].setup(server)
         end,
       },
+    })
+
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      callback = function()
+        vim.lsp.buf.code_action({
+          apply = true,
+          context = { only = { 'source.fixAll' } },
+        })
+      end,
     })
   end,
 }
