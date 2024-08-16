@@ -174,6 +174,7 @@ return { -- LSP Configuration & Plugins
       'stylua', -- Used to format lua code
       'clang-format',
       'prettierd',
+      'prettier',
       'eslint-lsp',
       'tailwindcss-language-server',
     })
