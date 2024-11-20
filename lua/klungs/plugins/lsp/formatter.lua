@@ -22,6 +22,7 @@ return { -- Autoformat
       javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
       rust = { 'rustfmt' },
+      go = { 'goimports' },
     },
   },
 }

@@ -157,6 +157,7 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+      zls = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -177,6 +178,7 @@ return { -- LSP Configuration & Plugins
       'prettier',
       'eslint-lsp',
       'tailwindcss-language-server',
+      'goimports',
     })
     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
