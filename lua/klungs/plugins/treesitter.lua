@@ -21,6 +21,8 @@ return {
       'typescript',
       'vimdoc',
       'vim',
+      'markdown',
+      'zig',
     },
 
     -- Autoinstall languages that are not installed
