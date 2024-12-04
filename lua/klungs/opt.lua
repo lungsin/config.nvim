@@ -56,7 +56,7 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.opt.colorcolumn = '120'
+vim.opt.colorcolumn = '80,120'
 
 -- Disable word wrap
 vim.opt.wrap = false
