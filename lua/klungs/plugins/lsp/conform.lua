@@ -1,5 +1,6 @@
 return { -- Autoformat
   'stevearc/conform.nvim',
+  event = 'BufWritePre',
   keys = {
     {
       '<leader>cf',
@@ -9,10 +10,26 @@ return { -- Autoformat
       mode = '',
       desc = 'Conform: Code Format',
     },
+    {
+      '<leader>tf',
+      function()
+        if vim.b.disable_autoformat then
+          vim.b.disable_autoformat = false
+        else
+          vim.b.disable_autoformat = true
+        end
+      end,
+      mode = '',
+      desc = 'Conform: Toggle Auto Format',
+    },
   },
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
+      -- Check if auto-format is disabled for the current buffer
+      if vim.b[bufnr].disable_autoformat then
+        return
+      end
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
@@ -42,6 +59,13 @@ return { -- Autoformat
       json = { 'prettierd', 'prettier', stop_after_first = true },
       rust = { 'rustfmt' },
       go = { 'goimports' },
+      c = { 'clang_format' },
+      cpp = { 'clang_format' },
+    },
+    formatters = {
+      clang_format = {
+        prepend_args = { '--style=file', '--fallback-style=LLVM' },
+      },
     },
   },
 }
