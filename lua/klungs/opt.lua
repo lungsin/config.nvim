@@ -63,3 +63,7 @@ vim.opt.colorcolumn = '80,120'
 
 -- Disable word wrap
 vim.opt.wrap = false
+
+-- Fold using treesitter
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
