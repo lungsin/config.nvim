@@ -4,10 +4,10 @@ return {
     -- local fterm = require('FTerm')
     -- fterm.setup({})
 
-    vim.keymap.set('n', '<C-i>', '<CMD>lua require("FTerm").toggle()<CR>', { desc = 'Fterm: Toggle Terminal' })
+    vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', { desc = 'Fterm: Toggle Terminal' })
     vim.keymap.set(
       't',
-      '<C-i>',
+      '<A-i>',
       '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
       { desc = 'Fterm: Toggle Terminal' }
     )
