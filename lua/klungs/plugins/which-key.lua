@@ -3,7 +3,7 @@ return {
   'folke/which-key.nvim',
   event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
   opts = {
-    preset = "helix",
+    preset = 'helix',
     spec = {
       { '<leader>c', group = '[C]ode' },
       { '<leader>d', group = '[D]ocument' },
@@ -12,15 +12,16 @@ return {
       { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-    }
+      { '<leader>o', group = '[O]verseer' },
+    },
   },
   keys = {
     {
-      "<leader>?",
+      '<leader>?',
       function()
-        require("which-key").show({ global = false })
+        require('which-key').show({ global = false })
       end,
-      desc = "Buffer Local Keymaps (which-key)",
+      desc = 'Buffer Local Keymaps (which-key)',
     },
   },
 }
