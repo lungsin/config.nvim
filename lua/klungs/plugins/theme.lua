@@ -2,11 +2,11 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
-    enabled = false,
+    enabled = true,
     priority = 1001, -- make sure to load this before all the other start plugins
     config = function()
       require('catppuccin').setup({
-        flavour = 'macchiato', -- latte, frappe, macchiato, mocha
+        flavour = 'mocha', -- latte, frappe, macchiato, mocha
       })
 
       -- setup must be called before loading
@@ -49,6 +49,7 @@ return {
   {
     'rose-pine/neovim',
     priority = 1000,
+    enable = false,
     name = 'rose-pine',
     init = function()
       vim.cmd.colorscheme('rose-pine')

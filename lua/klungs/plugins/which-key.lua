@@ -10,7 +10,7 @@ return {
       { '<leader>r', group = '[R]ename' },
       { '<leader>f', group = '[F]ind' },
       { '<leader>w', group = '[W]orkspace' },
-      { '<leader>t', group = '[T]oggle' },
+      { '<leader>t', group = '[T]oggle/Trigger' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       { '<leader>o', group = '[O]verseer' },
     },

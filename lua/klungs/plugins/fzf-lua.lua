@@ -66,7 +66,7 @@ return {
     vim.keymap.set('v', '<leader>sW', function()
       fzf.grep_visual({ cwd = vim.uv.cwd() })
     end, { desc = 'Selection (cwd)' })
-    vim.keymap.set('n', '<leader>uC', fzf.colorschemes, { desc = 'Colorscheme with Preview' })
+    vim.keymap.set('n', '<leader>sC', fzf.colorschemes, { desc = 'Colorscheme with Preview' })
     vim.keymap.set('n', '<leader>ss', fzf.lsp_document_symbols, { desc = 'Goto Symbol' })
     vim.keymap.set('n', '<leader>sS', fzf.lsp_live_workspace_symbols, { desc = 'Goto Symbol (Workspace)' })
 
