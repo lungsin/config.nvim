@@ -68,3 +68,17 @@ vim.opt.colorcolumn = '80,120'
 
 -- Disable word wrap
 vim.opt.wrap = false
+
+-- Fold
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldtext = ''
+-- vim.opt.foldcolumn = '3'
+vim.opt.foldlevelstart = 99
+vim.opt.fillchars = {
+  eob = ' ',
+  fold = ' ',
+  foldclose = '',
+  foldopen = '',
+  foldsep = ' ',
+}
