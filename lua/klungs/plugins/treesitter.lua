@@ -50,4 +50,22 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require('nvim-treesitter.configs').setup(opts)
+
+    -- NOTE: Jai is currently not supported by nvim-treesitter. This chunk of code
+    -- is a workaround to get syntax highlighting working for Jai files.
+    local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+    parser_config.jai = {
+      install_info = {
+        url = 'https://github.com/constantitus/tree-sitter-jai.git',
+        files = { 'src/parser.c', 'src/scanner.c' },
+      },
+      filetype = 'jai',
+      filetype_to_parsername = 'jai',
+      indent = {
+        enable = true,
+      },
+    }
+  end,
 }

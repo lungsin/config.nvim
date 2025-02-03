@@ -1,1 +1,1 @@
-return { 'rluba/jai.vim' }
+return { 'rluba/jai.vim', enabled = true }

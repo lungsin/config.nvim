@@ -7,6 +7,6 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 -- Custom config to indicate which picker to choose
 ---@type "telescope" | "fzf-lua"
-vim.g.picker = "telescope"
+vim.g.picker = 'telescope'
 
 require('klungs')
