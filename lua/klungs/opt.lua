@@ -68,6 +68,8 @@ vim.opt.colorcolumn = '80,120'
 
 -- Disable word wrap
 vim.opt.wrap = false
+-- But in case I enabled it manually, breaks by word rather than character
+vim.opt.linebreak = true
 
 -- Fold
 vim.opt.foldmethod = 'expr'
