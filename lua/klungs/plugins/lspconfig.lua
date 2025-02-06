@@ -42,6 +42,13 @@ return { -- LSP Configuration & Plugins
         -- or a suggestion from your LSP for this to activate.
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
+        map('<leader>cA', function()
+          vim.lsp.buf.code_action({
+            apply = true,
+            context = { only = { 'source.fixAll' } },
+          })
+        end, 'Code Action Fix All')
+
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -113,7 +120,8 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
-      ts_ls = {},
+      -- ts_ls = {},
+      vtsls = {},
       eslint = {
         settings = {
           codeActionOnSave = {
@@ -175,6 +183,7 @@ return { -- LSP Configuration & Plugins
       },
     })
 
+    -- Setup code action to fix all fixable errors. Mainly for eslint.
     vim.api.nvim_create_autocmd('BufWritePre', {
       callback = function()
         vim.lsp.buf.code_action({

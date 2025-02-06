@@ -33,7 +33,8 @@ return { -- Autoformat
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
-      local disable_filetypes = { c = true, cpp = true }
+      local disable_filetypes =
+        { c = true, cpp = true, javascript = true, typescript = true, typescriptreact = true, javascriptreact = true }
       local lsp_format_opt
       if disable_filetypes[vim.bo[bufnr].filetype] then
         lsp_format_opt = 'never'
@@ -47,15 +48,15 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use a sub-list to tell conform to run *until* a formatter
-      -- is found.
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      -- For FE stuff, we use rely on eslint instead. It's being setup on
+      -- the lsp side.
+      -- NOTE: Somehow the prettier formatter is quite slow and the prettierd
+      -- formatter is conflicting with the lsp code action due to it being async
+
+      -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      -- typescript = { 'prettierd', 'prettier', stop_after_first = true },
+      -- typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      -- javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
       rust = { 'rustfmt' },
       go = { 'goimports' },
