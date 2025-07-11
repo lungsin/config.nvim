@@ -6,7 +6,7 @@ return {
     local ai = require('mini.ai')
     ai.setup({
       custom_textobjects = {
-        B = extra.gen_ai_spec.buffer(),
+        g = extra.gen_ai_spec.buffer(),
         D = extra.gen_ai_spec.diagnostic(),
         I = extra.gen_ai_spec.indent(),
         N = extra.gen_ai_spec.number(),
