@@ -3,7 +3,7 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     enabled = false,
-    priority = 1001, -- make sure to load this before all the other start plugins
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('catppuccin').setup({
         flavour = 'mocha', -- latte, frappe, macchiato, mocha
@@ -15,7 +15,7 @@ return {
   },
   {
     'folke/tokyonight.nvim',
-    priority = 1001, -- make sure to load this before all the other start plugins
+    priority = 1000, -- make sure to load this before all the other start plugins
     enabled = false,
     init = function()
       -- Load the colorscheme here.
@@ -28,31 +28,21 @@ return {
     end,
   },
   {
-    'rebelot/kanagawa.nvim',
-    priority = 1001, -- make sure to load this before all the other start plugins
-    enabled = false,
-    init = function()
-      vim.cmd.colorscheme('kanagawa-dragon')
-    end,
-  },
-  {
-    'navarasu/onedark.nvim',
-    priority = 1001, -- make sure to load this before all the other start plugins
-    enabled = false,
-    init = function()
-      require('onedark').setup({
-        style = 'warmer',
-      })
-      vim.cmd.colorscheme('onedark')
-    end,
-  },
-  {
     'rose-pine/neovim',
     priority = 1000,
-    enable = true,
+    enable = false,
     name = 'rose-pine',
     init = function()
       vim.cmd.colorscheme('rose-pine')
+    end,
+  },
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    enable = true,
+    config = function()
+      require('nordic').load()
     end,
   },
 }
