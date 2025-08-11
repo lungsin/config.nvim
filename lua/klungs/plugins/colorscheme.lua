@@ -2,7 +2,7 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
-    enabled = false,
+    enabled = true,
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('catppuccin').setup({
@@ -24,7 +24,7 @@ return {
       vim.cmd.colorscheme('tokyonight-night')
 
       -- You can configure highlights by doing something like
-      vim.cmd.hi('Comment gui=none')
+      -- vim.cmd.hi('Comment gui=none')
     end,
   },
   {
@@ -40,7 +40,7 @@ return {
     'AlexvZyl/nordic.nvim',
     lazy = false,
     priority = 1000,
-    enabled = true,
+    enabled = false,
     config = function()
       require('nordic').load()
     end,
