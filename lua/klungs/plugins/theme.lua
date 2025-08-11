@@ -30,7 +30,7 @@ return {
   {
     'rose-pine/neovim',
     priority = 1000,
-    enable = false,
+    enabled = false,
     name = 'rose-pine',
     init = function()
       vim.cmd.colorscheme('rose-pine')
@@ -40,7 +40,7 @@ return {
     'AlexvZyl/nordic.nvim',
     lazy = false,
     priority = 1000,
-    enable = true,
+    enabled = true,
     config = function()
       require('nordic').load()
     end,

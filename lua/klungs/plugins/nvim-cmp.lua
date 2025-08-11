@@ -1,6 +1,6 @@
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
-  enabled = false,
+  enabled = true,
   event = 'InsertEnter',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
@@ -42,13 +42,17 @@ return { -- Autocompletion
     luasnip.config.setup({})
 
     cmp.setup({
-      autocomplete = false,
+      -- autocomplete = false,
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
       },
-      completion = { completeopt = 'menu,menuone,noinsert' },
+      completion = {
+        -- force autocomplete to be triggerred manually
+        autocomplete = false,
+        completeopt = 'menu,menuone,noinsert',
+      },
 
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
@@ -70,9 +74,8 @@ return { -- Autocompletion
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
 
         -- Manually trigger a completion from nvim-cmp.
-        --  Generally you don't need this, because nvim-cmp will display
-        --  completions whenever it has completion options available.
         ['<C-Space>'] = cmp.mapping.complete({}),
+        ['<C-x><C-o>'] = cmp.mapping.complete({}),
 
         -- Think of <c-l> as moving to the right of your snippet expansion.
         --  So if you have a snippet that's like:
