@@ -1,6 +1,6 @@
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
-  enabled = true,
+  enabled = false,
   event = 'InsertEnter',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
@@ -75,7 +75,7 @@ return { -- Autocompletion
 
         -- Manually trigger a completion from nvim-cmp.
         ['<C-Space>'] = cmp.mapping.complete({}),
-        ['<C-x><C-o>'] = cmp.mapping.complete({}),
+        -- ['<C-x><C-o>'] = cmp.mapping.complete({}),
 
         -- Think of <c-l> as moving to the right of your snippet expansion.
         --  So if you have a snippet that's like:

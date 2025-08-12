@@ -7,7 +7,7 @@ return { -- LSP Configuration & Plugins
 
     -- Dependencies to add capabilities into the lsp
     -- 'saghen/blink.cmp'
-    'hrsh7th/nvim-cmp',
+    -- 'hrsh7th/nvim-cmp',
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -142,9 +142,9 @@ return { -- LSP Configuration & Plugins
 
     -- Setup mason
     require('mason').setup()
-    local cmp_lsp = require('cmp_nvim_lsp')
-    local capabilities =
-      vim.tbl_deep_extend('force', {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
+    -- local cmp_lsp = require('cmp_nvim_lsp')
+    -- local capabilities =
+    --   vim.tbl_deep_extend('force', {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
 
     require('mason-lspconfig').setup({
       ensure_installed = vim.tbl_keys(servers or {}),
@@ -155,7 +155,7 @@ return { -- LSP Configuration & Plugins
           -- by the server configuration above. Useful when disabling
           -- certain features of an LSP (for example, turning off formatting for ts_ls)
           -- server.capabilities = require('blink.cmp').get_lsp_capabilities(server.capabilities)
-          server.capabilities = capabilities
+          -- server.capabilities = capabilities
 
           require('lspconfig')[server_name].setup(server)
         end,
