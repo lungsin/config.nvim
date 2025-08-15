@@ -63,7 +63,7 @@ return { -- LSP Configuration & Plugins
         --
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
           local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
@@ -90,55 +90,13 @@ return { -- LSP Configuration & Plugins
         -- code, if the language server you are using supports them
         --
         -- This may be unwanted, since they displace some of your code
-        if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
           map('<leader>th', function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
           end, '[T]oggle Inlay [H]ints')
         end
       end,
     })
-
-    -- Enable the following language servers
-    --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-    --
-    --  Add any additional override configuration in the following tables. Available keys are:
-    --  - cmd (table): Override the default command used to start the server
-    --  - filetypes (table): Override the default list of associated filetypes for the server
-    --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-    --  - settings (table): Override the default settings passed when initializing the server.
-    --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-    local servers = {
-      clangd = {
-        filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'hpp' },
-      },
-      gopls = {},
-      -- pyright = {},
-      rust_analyzer = {},
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      -- ts_ls = {},
-      vtsls = {},
-      eslint = {
-        settings = {
-          codeActionOnSave = {
-            enable = false,
-          },
-        },
-      },
-      lua_ls = {
-        -- cmd = {...},
-        -- filetypes { ...},
-        -- capabilities = {},
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
-          },
-        },
-      },
-    }
 
     -- Setup mason
     require('mason').setup()
@@ -147,31 +105,28 @@ return { -- LSP Configuration & Plugins
     --   vim.tbl_deep_extend('force', {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
 
     require('mason-lspconfig').setup({
-      ensure_installed = vim.tbl_keys(servers or {}),
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for ts_ls)
-          -- server.capabilities = require('blink.cmp').get_lsp_capabilities(server.capabilities)
-          -- server.capabilities = capabilities
-
-          require('lspconfig')[server_name].setup(server)
-        end,
+      ensure_installed = {
+        'clangd',
+        'gopls',
+        'rust_analyzer',
+        'vtsls',
+        'eslint',
+        'lua_ls',
       },
     })
 
-    local ensure_installed = {
-      'stylua', -- Used to format lua code
-      -- 'clang-format',
-      'prettierd',
-      'prettier',
-      'eslint-lsp',
-      'tailwindcss',
-      'goimports',
-    }
-    require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
+    -- Install formarters & linters
+    require('mason-tool-installer').setup({
+      ensure_installed = {
+        'stylua', -- Used to format lua code
+        -- 'clang-format',
+        'prettierd',
+        'prettier',
+        'eslint-lsp',
+        'tailwindcss',
+        'goimports',
+      },
+    })
 
     -- Setup code action to fix all fixable errors. Mainly for eslint.
     vim.api.nvim_create_autocmd('BufWritePre', {
