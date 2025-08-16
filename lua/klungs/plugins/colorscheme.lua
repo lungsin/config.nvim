@@ -1,5 +1,5 @@
 function SetupColor(color)
-  color = color or 'catppuccin'
+  color = color or 'catppuccin-mocha'
   vim.cmd.colorscheme(color)
 
   -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
@@ -13,7 +13,7 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('catppuccin').setup({
-        flavour = 'mocha', -- latte, frappe, macchiato, mocha
+        no_italic = true,
       })
       SetupColor()
     end,
