@@ -38,12 +38,16 @@ return { -- LSP Configuration & Plugins
         -- or a suggestion from your LSP for this to activate.
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-        map('<leader>cA', function()
-          vim.lsp.buf.code_action({
-            apply = true,
-            context = { only = { 'source.fixAll' } },
-          })
-        end, 'Code Action Fix All')
+        map(
+          '<leader>cA',
+          function()
+            vim.lsp.buf.code_action({
+              apply = true,
+              context = { only = { 'source.fixAll' } },
+            })
+          end,
+          'Code Action Fix All'
+        )
 
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap
@@ -87,9 +91,11 @@ return { -- LSP Configuration & Plugins
         --
         -- This may be unwanted, since they displace some of your code
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-          map('<leader>th', function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-          end, '[T]oggle Inlay [H]ints')
+          map(
+            '<leader>th',
+            function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })) end,
+            '[T]oggle Inlay [H]ints'
+          )
         end
       end,
     })
@@ -101,6 +107,7 @@ return { -- LSP Configuration & Plugins
     --   vim.tbl_deep_extend('force', {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
 
     require('mason-lspconfig').setup({
+      automatic_enable = true,
       ensure_installed = {
         'clangd',
         'gopls',
@@ -125,13 +132,13 @@ return { -- LSP Configuration & Plugins
     })
 
     -- Setup code action to fix all fixable errors. Mainly for eslint.
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      callback = function()
-        vim.lsp.buf.code_action({
-          apply = true,
-          context = { only = { 'source.fixAll' } },
-        })
-      end,
-    })
+    -- vim.api.nvim_create_autocmd('BufWritePre', {
+    --   callback = function()
+    --     vim.lsp.buf.code_action({
+    --       apply = true,
+    --       context = { only = { 'source.fixAll' } },
+    --     })
+    --   end,
+    -- })
   end,
 }

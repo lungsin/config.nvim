@@ -2,7 +2,7 @@
 return {
   'ibhagwan/fzf-lua',
   event = 'VimEnter',
-  enabled = true,
+  enabled = false,
   dependencies = {
     -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
@@ -22,18 +22,17 @@ return {
     vim.keymap.set('n', '<leader><space>', '<cmd>FzfLua files<cr>', { desc = 'Find Files (Root Dir)' })
     -- find
     vim.keymap.set('n', '<leader>fb', '<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>', { desc = 'Buffers' })
-    vim.keymap.set('n', '<leader>fc', function()
-      fzf.files({ cwd = vim.fn.stdpath('config') })
-    end, { desc = 'Find Config File' })
+    vim.keymap.set(
+      'n',
+      '<leader>fc',
+      function() fzf.files({ cwd = vim.fn.stdpath('config') }) end,
+      { desc = 'Find Config File' }
+    )
     vim.keymap.set('n', '<leader>ff', fzf.files, { desc = 'Find Files (Root Dir)' })
-    vim.keymap.set('n', '<leader>fF', function()
-      fzf.files({ cwd = vim.uv.cwd() })
-    end, { desc = 'Find Files (cwd)' })
+    vim.keymap.set('n', '<leader>fF', function() fzf.files({ cwd = vim.uv.cwd() }) end, { desc = 'Find Files (cwd)' })
     vim.keymap.set('n', '<leader>fg', '<cmd>FzfLua git_files<cr>', { desc = 'Find Files (git-files)' })
     vim.keymap.set('n', '<leader>fr', '<cmd>FzfLua oldfiles<cr>', { desc = 'Recent' })
-    vim.keymap.set('n', '<leader>fR', function()
-      fzf.oldfiles({ cwd = vim.uv.cwd() })
-    end, { desc = 'Recent (cwd)' })
+    vim.keymap.set('n', '<leader>fR', function() fzf.oldfiles({ cwd = vim.uv.cwd() }) end, { desc = 'Recent (cwd)' })
     -- git
     vim.keymap.set('n', '<leader>gc', '<cmd>FzfLua git_commits<CR>', { desc = 'Commits' })
     vim.keymap.set('n', '<leader>gs', '<cmd>FzfLua git_status<CR>', { desc = 'Status' })
@@ -46,9 +45,7 @@ return {
     vim.keymap.set('n', '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', { desc = 'Document Diagnostics' })
     vim.keymap.set('n', '<leader>sD', '<cmd>FzfLua diagnostics_workspace<cr>', { desc = 'Workspace Diagnostics' })
     vim.keymap.set('n', '<leader>sg', '<cmd>FzfLua live_grep<cr>', { desc = 'Grep (Root Dir)' })
-    vim.keymap.set('n', '<leader>sG', function()
-      fzf.live_grep({ cwd = vim.uv.cwd() })
-    end, { desc = 'Grep (cwd)' })
+    vim.keymap.set('n', '<leader>sG', function() fzf.live_grep({ cwd = vim.uv.cwd() }) end, { desc = 'Grep (cwd)' })
     vim.keymap.set('n', '<leader>sh', '<cmd>FzfLua help_tags<cr>', { desc = 'Help Pages' })
     vim.keymap.set('n', '<leader>sH', '<cmd>FzfLua highlights<cr>', { desc = 'Search Highlight Groups' })
     vim.keymap.set('n', '<leader>sj', '<cmd>FzfLua jumps<cr>', { desc = 'Jumplist' })
@@ -59,13 +56,14 @@ return {
     vim.keymap.set('n', '<leader>sR', '<cmd>FzfLua resume<cr>', { desc = 'Resume' })
     vim.keymap.set('n', '<leader>sq', '<cmd>FzfLua quickfix<cr>', { desc = 'Quickfix List' })
     vim.keymap.set('n', '<leader>sw', fzf.grep_cword, { desc = 'Word (Root Dir)' })
-    vim.keymap.set('n', '<leader>sW', function()
-      fzf.grep_cword({ cwd = vim.uv.cwd() })
-    end, { desc = 'Word (cwd)' })
+    vim.keymap.set('n', '<leader>sW', function() fzf.grep_cword({ cwd = vim.uv.cwd() }) end, { desc = 'Word (cwd)' })
     vim.keymap.set('v', '<leader>sw', fzf.grep_visual, { desc = 'Selection (Root Dir)' })
-    vim.keymap.set('v', '<leader>sW', function()
-      fzf.grep_visual({ cwd = vim.uv.cwd() })
-    end, { desc = 'Selection (cwd)' })
+    vim.keymap.set(
+      'v',
+      '<leader>sW',
+      function() fzf.grep_visual({ cwd = vim.uv.cwd() }) end,
+      { desc = 'Selection (cwd)' }
+    )
     vim.keymap.set('n', '<leader>sC', fzf.colorschemes, { desc = 'Colorscheme with Preview' })
     vim.keymap.set('n', '<leader>ss', fzf.lsp_document_symbols, { desc = 'Goto Symbol' })
     vim.keymap.set('n', '<leader>sS', fzf.lsp_live_workspace_symbols, { desc = 'Goto Symbol (Workspace)' })
