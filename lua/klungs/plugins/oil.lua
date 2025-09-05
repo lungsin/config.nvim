@@ -1,6 +1,18 @@
 return {
   'stevearc/oil.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    {
+      'nvim-tree/nvim-web-devicons',
+      opts = {
+        override_by_extension = {
+          ['jai'] = {
+            icon = 'J',
+            name = 'Log',
+          },
+        },
+      },
+    },
+  },
   config = function()
     require('oil').setup({
       default_file_explorer = true,
