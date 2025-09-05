@@ -4,9 +4,7 @@ return { -- Autoformat
   keys = {
     {
       '<leader>cf',
-      function()
-        require('conform').format({ async = true, lsp_format = 'fallback' })
-      end,
+      function() require('conform').format({ async = true, lsp_format = 'fallback' }) end,
       mode = '',
       desc = 'Conform: Code Format',
     },
@@ -23,6 +21,7 @@ return { -- Autoformat
       desc = 'Conform: Toggle Auto Format',
     },
   },
+  ---@type conform.setupOpts
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
@@ -30,6 +29,12 @@ return { -- Autoformat
       if vim.b[bufnr].disable_autoformat then
         return
       end
+      -- Disable if it's QMK specific keymap.c file, to avoid format conflict with qmk.nvim plugin
+      local buf_name = vim.api.nvim_buf_get_name(bufnr)
+      if buf_name:match('keymap.c$') then
+        return
+      end
+
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
