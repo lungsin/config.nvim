@@ -1,12 +1,13 @@
 return { -- Autoformat
   'stevearc/conform.nvim',
-  event = 'BufWritePre',
+  event = { 'BufWritePre' },
+  cmd = { 'ConformInfo' },
   keys = {
     {
       '<leader>cf',
       function() require('conform').format({ async = true, lsp_format = 'fallback' }) end,
       mode = '',
-      desc = 'Conform: Code Format',
+      desc = 'Format buffer',
     },
     {
       '<leader>tf',
@@ -18,7 +19,7 @@ return { -- Autoformat
         end
       end,
       mode = '',
-      desc = 'Conform: Toggle Auto Format',
+      desc = 'Toggle Auto Format',
     },
   },
   ---@type conform.setupOpts
