@@ -98,18 +98,20 @@ return {
     -- { 'gy', function() Snacks.picker.lsp_type_definitions() end, desc = 'Goto T[y]pe Definition' },
     -- { '<leader>ss', function() Snacks.picker.lsp_symbols() end, desc = 'LSP Symbols' },
     -- { '<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'LSP Workspace Symbols' },
+
     -- Other
-    { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Toggle Zen Mode' },
-    { '<leader>z', function() Snacks.zen() end, desc = 'Toggle Zen Mode' },
-    { '<leader>Z', function() Snacks.zen.zoom() end, desc = 'Toggle Zoom' },
-    { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
-    { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
-    { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Notification History' },
-    { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Delete Buffer' },
-    { '<leader>cR', function() Snacks.rename.rename_file() end, desc = 'Rename File' },
+    { '<leader>uz', function() Snacks.zen() end, desc = 'Toggle Zen Mode' },
+    { '<leader>uZ', function() Snacks.zen.zoom() end, desc = 'Toggle Zoom' },
+    { '<leader>unn', function() Snacks.notifier.show_history() end, desc = 'Notification History' },
+    { '<leader>unh', function() Snacks.notifier.hide() end, desc = 'Dismiss All Notifications' },
+    --
     { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse', mode = { 'n', 'v' } },
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
-    { '<leader>un', function() Snacks.notifier.hide() end, desc = 'Dismiss All Notifications' },
+    --
+    { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
+    { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
+    { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Delete Buffer with preserved layout' },
+    --
     { '<c-/>', function() Snacks.terminal() end, desc = 'Toggle Terminal' },
     { '<c-_>', function() Snacks.terminal() end, desc = 'which_key_ignore' },
     { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next Reference', mode = { 'n', 't' } },

@@ -68,6 +68,7 @@ return {
     { 'grr', function() FzfLua.lsp_references() end, nowait = true, desc = 'References' },
     { 'gri', function() FzfLua.lsp_implementations() end, desc = 'Goto Implementation' },
     { 'gra', function() FzfLua.lsp_code_actions() end, desc = 'Code Actions' },
+    { 'grt', function() FzfLua.lsp_typedefs() end, desc = 'Goto Type Definition' },
     { 'gy', function() FzfLua.lsp_typedefs() end, desc = 'Goto Type Definition' },
     { 'gi', function() FzfLua.lsp_incoming_calls() end, desc = 'Incoming calls' },
     { 'go', function() FzfLua.lsp_outgoing_calls() end, desc = 'Outgoing calls' },
