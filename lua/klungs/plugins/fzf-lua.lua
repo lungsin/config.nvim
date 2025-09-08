@@ -61,6 +61,7 @@ return {
     { '<leader>sM', function() FzfLua.manpages() end, desc = 'Man Pages' },
     { '<leader>sq', function() FzfLua.quickfix() end, desc = 'Quickfix List' },
     { '<leader>sR', function() FzfLua.resume() end, desc = 'Resume' },
+    { '<leader>st', '<cmd>TodoFzfLua<CR>', desc = 'Todo' },
     { '<leader>uC', function() FzfLua.colorschemes() end, desc = 'Colorschemes' },
     -- LSP / Diagnostics
     { 'gd', function() FzfLua.lsp_definitions() end, desc = 'Goto Definition' },

@@ -1,4 +1,5 @@
 require('klungs.opt')
 require('klungs.keymap')
 require('klungs.autocmd')
+require('klungs.diagnostic')
 require('klungs.lazy')

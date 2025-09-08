@@ -19,6 +19,7 @@ return {
       { '<leader>s', group = 'Search' },
       { '<leader>t', group = 'Toggle/Trigger' },
       { '<leader>u', group = 'ui', icon = { icon = '󰙵 ', color = 'cyan' } },
+      { '<leader>x', group = 'Quickfix/Loclist/Diagnostics' },
       { '[', group = 'prev' },
       { ']', group = 'next' },
       { 'g', group = 'goto' },
