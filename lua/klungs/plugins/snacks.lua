@@ -23,7 +23,10 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    picker = { enabled = true },
+    picker = {
+      -- Enabled to override vim.ui.select
+      enabled = true,
+    },
     quickfile = { enabled = true },
     scope = { enabled = true },
     words = { enabled = true },

@@ -68,7 +68,8 @@ return {
     { 'gD', function() FzfLua.lsp_declarations() end, desc = 'Goto Declaration' },
     { 'grr', function() FzfLua.lsp_references() end, nowait = true, desc = 'References' },
     { 'gri', function() FzfLua.lsp_implementations() end, desc = 'Goto Implementation' },
-    { 'gra', function() FzfLua.lsp_code_actions() end, desc = 'Code Actions' },
+    -- Note: the silent=true below is to suppress warning about vim.ui.select
+    { 'gra', function() FzfLua.lsp_code_actions({ silent = true }) end, desc = 'Code Actions' },
     { 'grt', function() FzfLua.lsp_typedefs() end, desc = 'Goto Type Definition' },
     { 'gy', function() FzfLua.lsp_typedefs() end, desc = 'Goto Type Definition' },
     { 'gi', function() FzfLua.lsp_incoming_calls() end, desc = 'Incoming calls' },
