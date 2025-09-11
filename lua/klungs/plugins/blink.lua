@@ -27,6 +27,16 @@ return {
         auto_show = false,
       },
     },
+    cmdline = {
+      enabled = true,
+      completion = {
+        list = {
+          selection = {
+            auto_insert = false,
+          },
+        },
+      },
+    },
 
     appearance = {
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'

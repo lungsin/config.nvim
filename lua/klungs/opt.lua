@@ -12,9 +12,7 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+vim.schedule(function() vim.opt.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -71,6 +69,9 @@ vim.opt.wrap = false
 -- But in case I enabled it manually, breaks by word rather than character
 vim.opt.linebreak = true
 
+-- Jumplist
+vim.o.jumpoptions = 'stack'
+
 -- Fold
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
@@ -84,3 +85,6 @@ vim.opt.fillchars = {
   foldopen = '',
   foldsep = ' ',
 }
+
+-- Cmdline completion (as fallback in case blink completion is disabled)
+vim.opt.wildmode = 'longest:full,full'
