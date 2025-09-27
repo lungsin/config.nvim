@@ -99,6 +99,7 @@ return { -- LSP Configuration & Plugins
         'vtsls',
         'eslint',
         'lua_ls',
+        'svelte',
       },
     })
 
