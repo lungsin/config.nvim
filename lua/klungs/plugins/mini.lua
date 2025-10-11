@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.nvim',
+  'nvim-mini/mini.nvim',
   version = false,
   config = function()
     local extra = require('mini.extra')
@@ -20,5 +20,10 @@ return {
     })
     require('mini.extra').setup()
     require('mini.surround').setup()
+    require('mini.icons').setup({
+      extension = {
+        ['jai'] = { glyph = 'J' },
+      },
+    })
   end,
 }
