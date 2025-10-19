@@ -10,6 +10,14 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('t', '<c-esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
 
+-- Window
+vim.keymap.set('n', '<c-q>', '<c-w>q', { desc = 'Close window' })
+vim.keymap.set('n', '<c-left>', '<c-w><left>', { desc = 'Focus window left' })
+vim.keymap.set('n', '<c-right>', '<c-w><right>', { desc = 'Focus window right' })
+vim.keymap.set('n', '<c-up>', '<c-w><up>', { desc = 'Focus window up' })
+vim.keymap.set('n', '<c-down>', '<c-w><down>', { desc = 'Focus window down' })
+
+-- Scrolling
 vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Half-page scroll down and center cursor' })
 vim.keymap.set('n', '<c-u>', '<c-u>zz', { desc = 'Half-page scroll down and center cursor' })
 vim.keymap.set('n', '<c-e>', '10<c-e>')
@@ -18,6 +26,8 @@ vim.keymap.set('n', '<c-y>', '10<c-y>')
 -- Visual mode
 vim.keymap.set('x', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 vim.keymap.set('x', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+vim.keymap.set('x', '>', '>gv', { desc = 'Indent selection right' })
+vim.keymap.set('x', '<', '<gv', { desc = 'Indent selection left' })
 
 -- Copy/Cut/Paste quality of life
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste and keep it available for further pasting' })
@@ -25,6 +35,3 @@ vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste and keep it available
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
 vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })
 vim.keymap.set('n', ']p', '<Cmd>exe "put "  . v:register<CR>', { desc = 'Paste Below' })
-
--- vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to system clipboard' })
--- vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank entire line to system clipboard' })
