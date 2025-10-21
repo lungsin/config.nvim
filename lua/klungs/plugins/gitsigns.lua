@@ -53,11 +53,11 @@ return {
       map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'Git preview hunk' })
       map('n', '<leader>hP', gitsigns.preview_hunk_inline, { desc = 'Toggle git show Deleted' })
       map('n', '<leader>hb', gitsigns.blame_line, { desc = 'Git blame line' })
+      map('n', '<leader>hB', gitsigns.toggle_current_line_blame, { desc = 'Toggle Git blame line' })
       map('n', '<leader>hd', gitsigns.diffthis, { desc = 'Git diff against index' })
       -- -@diagnostic disable-next-line: param-type-mismatch
       map('n', '<leader>hD', function() gitsigns.diffthis('@') end, { desc = 'Git Diff against last commit' })
       -- Toggles
-      map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'Toggle Git blame line' })
     end,
   },
 }

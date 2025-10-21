@@ -10,7 +10,7 @@ return { -- Autoformat
       desc = 'Format buffer',
     },
     {
-      '<leader>tf',
+      '<leader>Tf',
       function()
         if vim.b.disable_autoformat then
           vim.b.disable_autoformat = false
