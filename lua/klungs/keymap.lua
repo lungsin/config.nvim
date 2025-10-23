@@ -2,7 +2,7 @@
 --  See `:help vim.keymap.set()`
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' })
+vim.keymap.set('n', '<c-q>', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -11,11 +11,10 @@ vim.keymap.set('t', '<Esc><Esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set('t', '<c-esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
 
 -- Window
-vim.keymap.set('n', '<c-q>', '<c-w>q', { desc = 'Close window' })
-vim.keymap.set('n', '<c-left>', '<c-w><left>', { desc = 'Focus window left' })
-vim.keymap.set('n', '<c-right>', '<c-w><right>', { desc = 'Focus window right' })
-vim.keymap.set('n', '<c-up>', '<c-w><up>', { desc = 'Focus window up' })
-vim.keymap.set('n', '<c-down>', '<c-w><down>', { desc = 'Focus window down' })
+vim.keymap.set('n', '<M-left>', '<c-w><left>', { desc = 'Focus window left' })
+vim.keymap.set('n', '<M-right>', '<c-w><right>', { desc = 'Focus window right' })
+vim.keymap.set('n', '<M-up>', '<c-w><up>', { desc = 'Focus window up' })
+vim.keymap.set('n', '<M-down>', '<c-w><down>', { desc = 'Focus window down' })
 
 -- Scrolling
 vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Half-page scroll down and center cursor' })
