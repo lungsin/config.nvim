@@ -100,6 +100,7 @@ return { -- LSP Configuration & Plugins
         'eslint',
         'lua_ls',
         'svelte',
+        'postgres_lsp',
       },
     })
 

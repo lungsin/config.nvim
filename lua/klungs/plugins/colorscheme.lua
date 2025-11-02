@@ -21,6 +21,7 @@ return {
   {
     'folke/tokyonight.nvim',
     priority = 1000, -- make sure to load this before all the other start plugins
+    enabld = false,
     config = function()
       require('tokyonight').setup({})
       SetupColor()
@@ -29,6 +30,7 @@ return {
   {
     'rose-pine/neovim',
     priority = 1000,
+    enabled = false,
     name = 'rose-pine',
     config = function()
       require('rose-pine').setup({})
