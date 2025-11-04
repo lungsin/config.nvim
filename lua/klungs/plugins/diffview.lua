@@ -1,5 +1,6 @@
 return {
   'sindrets/diffview.nvim',
+  enabled = false,
   keys = {
     { '<leader>hf', '<cmd>DiffviewFileHistory<CR>', desc = 'Diff: Repo history' },
     { '<leader>hF', '<cmd>DiffviewFileHistory --follow %<CR>', desc = 'Diff: File history' },

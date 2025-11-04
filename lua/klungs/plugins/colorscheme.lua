@@ -14,6 +14,7 @@ return {
     config = function()
       require('catppuccin').setup({
         no_italic = true,
+        auto_integrations = true,
       })
       SetupColor()
     end,
@@ -21,7 +22,7 @@ return {
   {
     'folke/tokyonight.nvim',
     priority = 1000, -- make sure to load this before all the other start plugins
-    enabld = false,
+    enabled = false,
     config = function()
       require('tokyonight').setup({})
       SetupColor()

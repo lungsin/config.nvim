@@ -88,3 +88,6 @@ vim.opt.fillchars = {
 
 -- Cmdline completion (as fallback in case blink completion is disabled)
 vim.opt.wildmode = 'longest:full,full'
+
+-- Diff
+vim.opt.diffopt = 'filler,internal,closeoff,algorithm:histogram,context:5,linematch:60'
