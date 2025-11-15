@@ -15,6 +15,9 @@ return {
       view_options = {
         show_hidden = true,
       },
+      float = {
+        border = 'rounded',
+      },
     })
 
     -- Open parent directory in floating window

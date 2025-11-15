@@ -30,15 +30,16 @@ return {
     {
       '<leader>fd',
       function()
-        FzfLua.fzf_exec('fd . --type d', {
+        FzfLua.files({
           prompt = 'Oil❯ ',
-          dir_icon = 'T',
           actions = {
             ['default'] = function(selected, opts)
               opts.cwd = opts.cwd or vim.uv.cwd()
               if selected and #selected > 0 then
-                local path = opts.cwd .. '/' .. selected[1]
-                require('oil').toggle_float(path)
+                local path = vim.split(selected[1], ' ')[2]
+                local file_path = opts.cwd .. '/' .. path
+                local dir_path = file_path:match('^(.*)[/\\][^/\\]*$')
+                require('oil').toggle_float(dir_path)
               end
             end,
           },
