@@ -91,3 +91,11 @@ vim.opt.wildmode = 'longest:full,full'
 
 -- Diff
 vim.opt.diffopt = 'filler,internal,closeoff,algorithm:histogram,context:5,linematch:60'
+
+-- Cursor
+vim.opt.guicursor = table.concat({
+  'n-v-c-sm:block',
+  'i-ci-ve:ver25',
+  'r-cr-o:hor20',
+  't:ver25-blinkon500-blinkoff500-TermCursor',
+}, ',')
