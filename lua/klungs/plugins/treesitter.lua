@@ -58,12 +58,14 @@ return {
       vim.api.nvim_create_autocmd('User', {
         pattern = 'TSUpdate',
         callback = function()
-          -- NOTE: Jai is currently not supported by nvim-treesitter. This chunk of code
+          -- Jai is currently not supported by nvim-treesitter. This chunk of code
           -- is a workaround to get syntax highlighting working for Jai files.
           require('nvim-treesitter.parsers').jai = {
+            ---@diagnostic disable-next-line: missing-fields
             install_info = {
               url = 'https://github.com/constantitus/tree-sitter-jai.git',
-              revision = 'HEAD',
+              revision = 'a73dd2be5dfca88e91e1c4c5229c18769ab7dac7',
+              branch = 'master',
             },
             tier = 2,
           }

@@ -1,6 +1,7 @@
 return {
   'stevearc/overseer.nvim',
   event = 'VimEnter',
+  enabled = false,
   cmd = {
     'OverseerOpen',
     'OverseerClose',
