@@ -25,4 +25,16 @@ function M.on_load(name, fn)
   end
 end
 
+--- Check if the os is ubuntu / debian based
+--- @return boolean
+function M.is_debian_based()
+  local f = io.open('/etc/debian_version', 'r')
+  if f then
+    f:close()
+    return true
+  else
+    return false
+  end
+end
+
 return M

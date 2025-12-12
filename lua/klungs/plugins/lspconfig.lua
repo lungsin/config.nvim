@@ -86,13 +86,14 @@ return { -- LSP Configuration & Plugins
 
     -- Setup mason
     require('mason').setup()
-    -- local cmp_lsp = require('cmp_nvim_lsp')
-    -- local capabilities =
-    --   vim.tbl_deep_extend('force', {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
 
+    -- Debian based systems are used for servers which ideally have minimal dependencies.
+    -- Only install lsps and linters for non-debian based systems
+    local is_debian = require('klungs.util').is_debian_based()
     require('mason-lspconfig').setup({
       automatic_enable = true,
-      ensure_installed = {
+      ensure_installed = not is_debian and {
+        'lua_ls',
         'clangd',
         'gopls',
         'rust_analyzer',
@@ -101,20 +102,22 @@ return { -- LSP Configuration & Plugins
         'lua_ls',
         'svelte',
         'postgres_lsp',
-      },
+      } or {},
     })
 
     -- Install formarters & linters
     require('mason-tool-installer').setup({
-      ensure_installed = {
-        'stylua', -- Used to format lua code
-        -- 'clang-format',
-        'prettierd',
-        'prettier',
-        'eslint-lsp',
-        'tailwindcss',
-        'goimports',
-      },
+      ensure_installed = not is_debian
+          and {
+            'stylua', -- Used to format lua code
+            -- 'clang-format',
+            'prettierd',
+            'prettier',
+            'eslint-lsp',
+            'tailwindcss',
+            'goimports',
+          }
+        or {},
     })
 
     -- Setup code action to fix all fixable errors. Mainly for eslint.
