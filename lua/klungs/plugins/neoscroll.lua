@@ -8,8 +8,8 @@ return {
     local neoscroll = require('neoscroll')
     local keymap = {
       -- scroll full page:
-      ['<C-b>'] = function() neoscroll.ctrl_b({ duration = 250 }) end, -- 450 default
-      ['<C-f>'] = function() neoscroll.ctrl_f({ duration = 250 }) end, -- 450 default
+      ['<C-b>'] = function() neoscroll.ctrl_b({ duration = 300 }) end, -- 450 default
+      ['<C-f>'] = function() neoscroll.ctrl_f({ duration = 300 }) end, -- 450 default
       --
       -- scroll half page:
       ['<C-u>'] = function() neoscroll.ctrl_u({ duration = 150 }) end, -- 250 default
@@ -35,21 +35,8 @@ return {
       vim.keymap.set(modes, key, func)
     end
     neoscroll.setup({
-      mappings = {
-        -- FYI make sure you uncomment here if you comment out customizations above
-        -- remove keys that you want to customize, else neoscroll will redefine them
-        -- '<C-u>', -- 250 default works good
-        -- '<C-d>', -- 250 default works good
-        -- '<C-b>',
-        -- '<C-f>',
-        -- '<C-y>',
-        -- '<C-e>',
-        -- 'zt',
-        -- 'zz',
-        -- 'zb',
-        -- 'G', -- I expect this to be jarring and would never wanna wait 250ms per page up/down!
-        -- 'gg',
-      },
+      -- Disable all default mappings
+      mappings = {},
       easing = 'sine',
       hide_cursor = true, -- Make the scroll animation less crowded
     })
