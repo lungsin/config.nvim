@@ -1,6 +1,9 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Remap redo so that <c-r> can be used for other mappings
+vim.keymap.set('n', 'U', '<c-r>', { desc = 'Redo' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<c-q>', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' })
 

@@ -25,7 +25,7 @@ return {
     set('n', '<c-leftrelease>', mc.handleMouseRelease)
 
     -- Disable and enable cursors.
-    set({ 'n', 'x' }, '<c-x>', mc.toggleCursor)
+    set({ 'n', 'x' }, '<c-m>', mc.toggleCursor)
 
     -- Jumplist support
     vim.keymap.set({ 'v', 'n' }, '<c-i>', mc.jumpForward)

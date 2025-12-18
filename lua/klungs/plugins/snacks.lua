@@ -56,6 +56,7 @@ return {
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
+    terminal = { enabled = true },
     words = { enabled = true },
     styles = {
       notification = {

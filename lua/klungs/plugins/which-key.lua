@@ -10,6 +10,7 @@ return {
   opts = {
     preset = 'helix',
     spec = {
+      { '<leader>a', group = 'AI' },
       { '<leader>b', group = 'Buffer' },
       { '<leader>c', group = 'Code' },
       { '<leader>f', group = 'File/Find' },
