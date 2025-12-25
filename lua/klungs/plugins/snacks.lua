@@ -89,7 +89,8 @@ return {
     { '<leader>gd', function() Snacks.picker.git_diff() end, desc = 'Git Diff (Hunks)' },
     { '<leader>gx', function() Snacks.gitbrowse() end, desc = 'Git Browse', mode = { 'n', 'v' } },
     { '<leader>gq', function() Snacks.git.blame_line() end, desc = 'Git blame line', mode = { 'n', 'v' } },
-    { '<c-g>', function() Snacks.lazygit() end, desc = 'Lazygit', mode = { 'n', 't' } },
+    { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit', mode = 'n' },
+    { '<c-s-g>', function() Snacks.lazygit() end, desc = 'Lazygit', mode = { 'n', 't' } },
     -- Other
     { '<leader>unh', function() Snacks.notifier.show_history() end, desc = 'Notification History' },
     { '<leader>und', function() Snacks.notifier.hide() end, desc = 'Dismiss All Notifications' },

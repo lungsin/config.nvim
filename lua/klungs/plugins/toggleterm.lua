@@ -5,6 +5,7 @@
 return {
   'akinsho/toggleterm.nvim',
   version = '*',
+  enabled = false,
   opts = {
     open_mapping = '<c-/>',
     size = function(term)

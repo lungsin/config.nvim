@@ -85,7 +85,7 @@ return {
     { '<leader>sm', function() FzfLua.marks() end, desc = 'Marks' },
     { '<leader>sM', function() FzfLua.manpages() end, desc = 'Man Pages' },
     { '<leader>sq', function() FzfLua.quickfix() end, desc = 'Quickfix List' },
-    { '<leader>sR', function() FzfLua.resume() end, desc = 'Resume' },
+    { '<leader>sr', function() FzfLua.resume() end, desc = 'Resume' },
     { '<leader>st', function() require('todo-comments.fzf').todo({ prompt = 'Todo❯ ' }) end, desc = 'Todo' },
     { '<leader>uC', function() FzfLua.colorschemes() end, desc = 'Colorschemes' },
     -- LSP / Diagnostics
