@@ -76,7 +76,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-context',
     opts = {
-      enable = false,
+      enable = true,
       multiline_threshold = 3,
     },
     keys = {

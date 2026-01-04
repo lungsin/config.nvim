@@ -1,6 +1,7 @@
 return {
   'jake-stewart/multicursor.nvim',
   branch = '1.0',
+  enabled = true,
   config = function()
     local mc = require('multicursor-nvim')
     mc.setup()
@@ -8,10 +9,10 @@ return {
     local set = vim.keymap.set
 
     -- Add or skip cursor above/below the main cursor.
-    set({ 'n', 'x' }, '<S-up>', function() mc.lineAddCursor(-1) end)
-    set({ 'n', 'x' }, '<S-down>', function() mc.lineAddCursor(1) end)
-    set({ 'n', 'x' }, '<C-S-up>', function() mc.lineSkipCursor(-1) end)
-    set({ 'n', 'x' }, '<C-S-down>', function() mc.lineSkipCursor(1) end)
+    set('n', '<S-up>', function() mc.lineAddCursor(-1) end)
+    set('n', '<S-down>', function() mc.lineAddCursor(1) end)
+    set('n', '<C-S-up>', function() mc.lineSkipCursor(-1) end)
+    set('n', '<C-S-down>', function() mc.lineSkipCursor(1) end)
 
     -- Add or skip adding a new cursor by matching word/selection
     set({ 'n', 'x' }, '<C-n>', function() mc.matchAddCursor(1) end)
@@ -25,7 +26,7 @@ return {
     set('n', '<c-leftrelease>', mc.handleMouseRelease)
 
     -- Disable and enable cursors.
-    set({ 'n', 'x' }, '<c-m>', mc.toggleCursor)
+    set({ 'n', 'x' }, '<leader>m', mc.toggleCursor)
 
     -- Jumplist support
     vim.keymap.set({ 'v', 'n' }, '<c-i>', mc.jumpForward)

@@ -1,5 +1,6 @@
 return {
   'folke/trouble.nvim',
+  enabled = false,
   opts = {}, -- for default options, refer to the configuration section for custom setup.
   cmd = 'Trouble',
   keys = {
@@ -19,7 +20,7 @@ return {
       desc = 'Symbols (Trouble)',
     },
     {
-      '<leader>cl',
+      '<leader>ql',
       '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
       desc = 'LSP Definitions / references / ... (Trouble)',
     },

@@ -1,6 +1,10 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Remap increment/decrement if using <C-a> and <C-x>
+vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
+vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
+
 -- Remap redo so that <c-r> can be used for other mappings
 vim.keymap.set('n', 'U', '<c-r>', { desc = 'Redo' })
 
@@ -19,6 +23,10 @@ vim.keymap.set('n', '<M-right>', '<c-w><right>', { desc = 'Focus window right' }
 vim.keymap.set('n', '<M-up>', '<c-w><up>', { desc = 'Focus window up' })
 vim.keymap.set('n', '<M-down>', '<c-w><down>', { desc = 'Focus window down' })
 
+-- Save buffer
+vim.keymap.set('n', '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
+vim.keymap.set('i', '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
+
 -- Scrolling
 vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Half-page scroll down and center cursor' })
 vim.keymap.set('n', '<c-u>', '<c-u>zz', { desc = 'Half-page scroll down and center cursor' })
@@ -26,8 +34,9 @@ vim.keymap.set('n', '<c-e>', '10<c-e>')
 vim.keymap.set('n', '<c-y>', '10<c-y>')
 
 -- Visual mode
-vim.keymap.set('x', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
-vim.keymap.set('x', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+-- Use <C-r> to insert the v:count1 to commandline mode
+vim.keymap.set('x', 'J', [[:m '>+<C-r>=v:count1<CR><CR>gv=gv]], { desc = 'Move selection down' })
+vim.keymap.set('x', 'K', [[:m '<-<C-r>=v:count1+1<CR><CR>gv=gv]], { desc = 'Move selection up' })
 vim.keymap.set('x', '>', '>gv', { desc = 'Indent selection right' })
 vim.keymap.set('x', '<', '<gv', { desc = 'Indent selection left' })
 

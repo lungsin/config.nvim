@@ -2,9 +2,9 @@ return {
   -- See `:help gitsigns` to understand what the configuration keys do
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   'lewis6991/gitsigns.nvim',
-  enabled = false,
+  enabled = true,
   opts = {
-    current_line_blame = true,
+    -- current_line_blame = true,
     gh = true,
     on_attach = function(bufnr)
       local gitsigns = require('gitsigns')
@@ -35,7 +35,8 @@ return {
       end, { desc = 'Jump to previous git change' })
 
       -- Actions
-      -- visual mode
+      map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Git Stage/Un-stage Hunk' })
+      map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Git reset hunk' })
       map(
         'v',
         '<leader>hs',
@@ -48,19 +49,30 @@ return {
         function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end,
         { desc = 'reset git hunk' }
       )
-      -- Normal mode
-      map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Git Stage/Un-stage Hunk' })
-      map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Git reset hunk' })
+
       map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'Git Stage buffer' })
       map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'Git Reset buffer' })
+
+      -- Hunk preview
       map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'Git preview hunk' })
-      map('n', '<leader>hP', gitsigns.preview_hunk_inline, { desc = 'Toggle git show Deleted' })
+      map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = 'Toggle git show Deleted' })
+
+      -- Blame line
       map('n', '<leader>hb', gitsigns.blame_line, { desc = 'Git blame line' })
-      map('n', '<leader>hB', gitsigns.toggle_current_line_blame, { desc = 'Toggle Git blame line' })
+      map('n', '<leader>hB', function() gitsigns.blame_line({ full = true }) end)
+
       map('n', '<leader>hd', gitsigns.diffthis, { desc = 'Git diff against index' })
-      -- -@diagnostic disable-next-line: param-type-mismatch
-      map('n', '<leader>hD', function() gitsigns.diffthis('@') end, { desc = 'Git Diff against last commit' })
+      map('n', '<leader>hD', function()
+        ---@diagnostic disable-next-line: param-type-mismatch
+        gitsigns.diffthis('~')
+      end, { desc = 'Git Diff against last commit' })
+
       -- Toggles
+      map('n', '<leader>htb', gitsigns.toggle_current_line_blame, { desc = 'Toggle Git blame line' })
+      map('n', '<leader>htw', gitsigns.toggle_word_diff, { desc = 'Toggle word diff' })
+
+      -- Text object
+      map({ 'o', 'x' }, 'ih', gitsigns.select_hunk, { desc = 'Hunk' })
     end,
   },
 }
