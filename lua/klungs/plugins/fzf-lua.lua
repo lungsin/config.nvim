@@ -28,7 +28,7 @@ return {
     { '<leader>ff', function() FzfLua.files() end, desc = 'Find Files' },
     { '<leader>fF', function() FzfLua.files({ cwd = vim.uv.cwd() }) end, desc = 'Find File (cwd)' },
     {
-      '<leader>fd',
+      '<leader>fo',
       function()
         FzfLua.files({
           prompt = 'Oil❯ ',
