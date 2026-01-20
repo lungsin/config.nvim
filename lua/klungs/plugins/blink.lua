@@ -24,7 +24,7 @@ return {
     completion = {
       menu = {
         -- disable auto show to force manual completion
-        auto_show = false,
+        auto_show = true,
         draw = {
           components = {
             kind_icon = {
