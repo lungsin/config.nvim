@@ -6,8 +6,6 @@ return {
   'ibhagwan/fzf-lua',
   event = 'VimEnter',
   enabled = true,
-  priority = 1000,
-  lazy = false,
   dependencies = {
     { 'nvim-mini/mini.nvim' },
   },
@@ -22,6 +20,7 @@ return {
     { '<leader>,', function() FzfLua.buffers({ sort_lastused = true }) end, desc = 'Buffers' },
     { '<leader>/', function() FzfLua.live_grep() end, desc = 'Live Grep' },
     { '<leader>:', function() FzfLua.command_history() end, desc = 'Command History' },
+    { '<leader>.', function() FzfLua.resume() end, desc = 'Resume' },
     -- find
     { '<leader>fb', function() FzfLua.buffers({ sort_lastused = true }) end, desc = 'Buffers' },
     { '<leader>fc', function() FzfLua.files({ cwd = vim.fn.stdpath('config') }) end, desc = 'Find Config File' },
@@ -85,7 +84,7 @@ return {
     { '<leader>sm', function() FzfLua.marks() end, desc = 'Marks' },
     { '<leader>sM', function() FzfLua.manpages() end, desc = 'Man Pages' },
     { '<leader>sq', function() FzfLua.quickfix() end, desc = 'Quickfix List' },
-    { '<leader>sr', function() FzfLua.resume() end, desc = 'Resume' },
+    -- { '<leader>sr', function() FzfLua.resume() end, desc = 'Resume' },
     { '<leader>st', function() require('todo-comments.fzf').todo({ prompt = 'Todo❯ ' }) end, desc = 'Todo' },
     { '<leader>uC', function() FzfLua.colorschemes() end, desc = 'Colorschemes' },
     -- LSP / Diagnostics

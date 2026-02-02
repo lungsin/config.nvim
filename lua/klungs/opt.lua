@@ -4,6 +4,9 @@ vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.opt.mouse = 'a'
+-- Set lower value for vertical mousescroll because it's amplified with ghostty.
+-- Notes for future me, check out `mouse-scroll-multiplier` in ghostty config.
+vim.opt.mousescroll = 'ver:1,hor:6'
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
@@ -100,3 +103,6 @@ vim.opt.guicursor = table.concat({
   'r-cr-o:hor20',
   't:ver25-blinkon500-blinkoff500-TermCursor',
 }, ',')
+
+-- Session
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'

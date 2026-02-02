@@ -95,8 +95,9 @@ return {
     { '<leader>unh', function() Snacks.notifier.show_history() end, desc = 'Notification History' },
     { '<leader>und', function() Snacks.notifier.hide() end, desc = 'Dismiss All Notifications' },
     --
-    { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
-    { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
+    -- { '<leader>.', function() Snacks.picker.resume() end, desc = 'Toggle Scratch Buffer' },
+    -- { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
+    -- { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
     { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Delete Buffer with preserved layout' },
     --
     -- { '<c-/>', function() Snacks.terminal() end, desc = 'Toggle Terminal', mode = { 'n', 't' } },

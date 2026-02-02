@@ -46,3 +46,6 @@ vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste and keep it available
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
 vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })
 vim.keymap.set('n', ']p', '<Cmd>exe "put "  . v:register<CR>', { desc = 'Paste Below' })
+
+-- UI related stuff
+vim.keymap.set('n', '<leader>uw', function() vim.o.wrap = not vim.o.wrap end, { desc = 'Toggle line wrap' })
