@@ -1,0 +1,2 @@
+-- The line below is commented because it's already handled by Comment.nvim plugin.
+-- vim.bo.commentstring = '# %s'

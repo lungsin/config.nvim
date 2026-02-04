@@ -19,6 +19,7 @@ return {
         'fish',
         'c',
         'cpp',
+        'caddy',
         'go',
         'gomod',
         'gosum',
