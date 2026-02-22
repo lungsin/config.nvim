@@ -48,4 +48,9 @@ vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste A
 vim.keymap.set('n', ']p', '<Cmd>exe "put "  . v:register<CR>', { desc = 'Paste Below' })
 
 -- UI related stuff
-vim.keymap.set('n', '<leader>uw', function() vim.o.wrap = not vim.o.wrap end, { desc = 'Toggle line wrap' })
+local function toggle_line_wrap()
+  vim.o.wrap = not vim.o.wrap
+end
+
+vim.keymap.set('n', '<leader>uw', toggle_line_wrap, { desc = 'Toggle line wrap' })
+vim.keymap.set('n', '<leader>Tw', toggle_line_wrap, { desc = 'Toggle line wrap' })
