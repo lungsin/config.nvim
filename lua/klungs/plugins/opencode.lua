@@ -11,12 +11,20 @@ return {
     -- Required for `opts.events.reload`.
     vim.o.autoread = true
 
-    -- Recommended keymaps
     vim.keymap.set(
       { 'n', 'x' },
       '<c-k>', -- Using Cursor's mapping
-      function() require('opencode').ask('@this: ', { submit = true }) end,
-      { desc = 'Ask opencode' }
+      function()
+        require('opencode').command('session.new')
+        require('opencode').ask('@this: ', { submit = true, clear = true })
+      end,
+      { desc = 'Ask opencode in new session' }
+    )
+    vim.keymap.set(
+      { 'n', 'x' },
+      '<c-x>',
+      function() require('opencode').select() end,
+      { desc = 'Execute opencode action…' }
     )
     vim.keymap.set(
       { 'n', 'x' },
