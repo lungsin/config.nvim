@@ -65,7 +65,7 @@ return {
             ---@diagnostic disable-next-line: missing-fields
             install_info = {
               url = 'https://github.com/constantitus/tree-sitter-jai.git',
-              revision = 'a73dd2be5dfca88e91e1c4c5229c18769ab7dac7',
+              revision = '034d9ff4890a01bdd3e9fca8a98a87c6926fc45b',
               branch = 'master',
             },
             tier = 2,
