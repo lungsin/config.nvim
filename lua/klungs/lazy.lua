@@ -31,4 +31,6 @@ require('lazy').setup('klungs.plugins', {
       lazy = '💤 ',
     },
   },
+  -- Personal dev directory
+  dev = { path = '~/git' },
 })

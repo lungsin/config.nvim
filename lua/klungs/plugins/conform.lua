@@ -65,7 +65,7 @@ return { -- Autoformat
         -- javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         json = { 'prettierd', 'prettier', stop_after_first = true },
         rust = { 'rustfmt' },
-        go = { 'goimports' },
+        go = { 'goimports', 'gofumpt' },
         c = { 'clang_format' },
         cpp = { 'clang_format' },
         jai = function(bufnr)

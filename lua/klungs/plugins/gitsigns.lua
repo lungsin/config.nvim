@@ -61,8 +61,8 @@ return {
       map('n', '<leader>hb', gitsigns.blame_line, { desc = 'Git blame line' })
       map('n', '<leader>hB', function() gitsigns.blame_line({ full = true }) end)
 
-      map('n', '<leader>hd', gitsigns.diffthis, { desc = 'Git diff against index' })
-      map('n', '<leader>hD', function()
+      map('n', '<leader>hD', gitsigns.diffthis, { desc = 'Git diff against index' })
+      map('n', '<leader>hd', function()
         ---@diagnostic disable-next-line: param-type-mismatch
         gitsigns.diffthis('~')
       end, { desc = 'Git Diff against last commit' })

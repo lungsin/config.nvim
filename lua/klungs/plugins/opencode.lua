@@ -16,7 +16,7 @@ return {
       '<c-k>', -- Using Cursor's mapping
       function()
         require('opencode').command('session.new')
-        require('opencode').ask('@this: ', { submit = true, clear = true })
+        require('opencode').ask('@this: ', { submit = true })
       end,
       { desc = 'Ask opencode in new session' }
     )
