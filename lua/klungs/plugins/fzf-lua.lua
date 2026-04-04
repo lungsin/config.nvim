@@ -16,7 +16,7 @@ return {
     },
   },
   keys = {
-    { '<leader><space>', function() FzfLua.files() end, desc = 'Smart Find Files' },
+    { '<leader><space>', function() FzfLua.global({ prompt = 'Global' }) end, desc = 'Global picker' },
     { '<leader>,', function() FzfLua.buffers({ sort_lastused = true }) end, desc = 'Buffers' },
     { '<leader>/', function() FzfLua.live_grep() end, desc = 'Live Grep' },
     { '<leader>:', function() FzfLua.command_history() end, desc = 'Command History' },
