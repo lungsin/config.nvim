@@ -81,7 +81,7 @@ return {
       multiline_threshold = 3,
     },
     keys = {
-      { '<leader>Tc', '<cmd>TSContext toggle<CR>', desc = 'Toggle Treesitter Context' },
+      { '<leader>uc', '<cmd>TSContext toggle<CR>', desc = 'Toggle Treesitter Context' },
     },
   },
 }

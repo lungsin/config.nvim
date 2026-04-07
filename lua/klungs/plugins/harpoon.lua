@@ -7,8 +7,9 @@ return {
 
     local harpoon_add = function() harpoon:list():add() end
     local harpoon_list = function() harpoon.ui:toggle_quick_menu(harpoon:list()) end
-    vim.keymap.set('n', '<c-h>a', harpoon_add, { desc = 'Add to harpoon list' })
-    vim.keymap.set('n', '<c-h>h', harpoon_list, { desc = 'Harpoon list' })
+    vim.keymap.set('n', '<c-h>', harpoon_add, { desc = 'Add to harpoon list' })
+    vim.keymap.set('n', '<leader>b<c-h>', harpoon_add, { desc = 'Add to harpoon list' })
+    vim.keymap.set('n', '<leader>bh', harpoon_list, { desc = 'Harpoon list' })
 
     -- Using <leader>1..5 so switch file
     for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do

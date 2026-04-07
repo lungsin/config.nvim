@@ -4,13 +4,7 @@ return { -- Autoformat
   cmd = { 'ConformInfo' },
   keys = {
     {
-      '<leader>cf',
-      function() require('conform').format({ async = true, lsp_format = 'fallback' }) end,
-      mode = '',
-      desc = 'Format buffer',
-    },
-    {
-      '<leader>Tf',
+      '<leader>uf',
       function()
         if vim.b.disable_autoformat then
           vim.b.disable_autoformat = false
