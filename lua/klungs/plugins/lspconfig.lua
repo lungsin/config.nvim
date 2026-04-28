@@ -95,7 +95,6 @@ return { -- LSP Configuration & Plugins
         'lua_ls',
         'clangd',
         'gopls',
-        'rust_analyzer',
         'vtsls',
         'eslint',
         'lua_ls',
@@ -106,17 +105,15 @@ return { -- LSP Configuration & Plugins
 
     -- Install formarters & linters
     require('mason-tool-installer').setup({
-      ensure_installed = not is_debian
-          and {
-            'stylua', -- Used to format lua code
-            -- 'clang-format',
-            'prettierd',
-            'prettier',
-            'eslint-lsp',
-            'tailwindcss',
-            'goimports',
-          }
-        or {},
+      ensure_installed = not is_debian and {
+        'stylua', -- Used to format lua code
+        -- 'clang-format',
+        'prettierd',
+        'prettier',
+        'eslint-lsp',
+        'tailwindcss',
+        'goimports',
+      } or {},
     })
 
     -- Setup code action to fix all fixable errors. Mainly for eslint.

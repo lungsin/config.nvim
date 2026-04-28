@@ -12,7 +12,7 @@ return {
     vim.keymap.set('n', '<leader>bh', harpoon_list, { desc = 'Harpoon list' })
 
     -- Using <leader>1..5 so switch file
-    for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
+    for _, idx in ipairs({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }) do
       vim.keymap.set('n', string.format('<c-%d>', idx), function() harpoon:list():select(idx) end)
     end
 

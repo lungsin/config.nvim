@@ -21,7 +21,7 @@ return {
       -- { '<leader>T', group = 'Toggle' },
       { '<leader>u', group = 'Editor/UI/Notification', icon = { icon = '󰙵 ', color = 'cyan' } },
       { '<leader>un', group = 'Notification', icon = { icon = '󰙵 ', color = 'cyan' } },
-      { '<leader>q', group = 'Session' },
+      { '<leader>Q', group = 'Session' },
       { '[', group = 'prev' },
       { ']', group = 'next' },
       { 'g', group = 'goto' },
@@ -30,6 +30,7 @@ return {
       -- better descriptions
       { 'gx', desc = 'Open with system app' },
       { 'grx', desc = 'Codelens' },
+      { '<leader>d', hidden = true },
     },
   },
   keys = {

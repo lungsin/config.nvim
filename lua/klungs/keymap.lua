@@ -24,8 +24,7 @@ vim.keymap.set('n', '<M-up>', '<c-w><up>', { desc = 'Focus window up' })
 vim.keymap.set('n', '<M-down>', '<c-w><down>', { desc = 'Focus window down' })
 
 -- Save buffer
-vim.keymap.set('n', '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
-vim.keymap.set('i', '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
+vim.keymap.set({ 'n', 'i' }, '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
 
 -- Scrolling
 vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Half-page scroll down and center cursor' })
@@ -42,6 +41,8 @@ vim.keymap.set('x', '<', '<gv', { desc = 'Indent selection left' })
 
 -- Copy/Cut/Paste quality of life
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste and keep it available for further pasting' })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete without changing clipboard' })
+
 -- Paste linewise before/after current line
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
 vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })
