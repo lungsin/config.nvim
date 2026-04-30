@@ -14,6 +14,12 @@ return {
       -- Remove cwd from the prompt, not that useful
       cwd_prompt = false,
     },
+    keymap = {
+      fzf = {
+        true,
+        ['ctrl-q'] = 'select-all+accept',
+      },
+    },
   },
   keys = {
     { '<leader><space>', function() FzfLua.global({ prompt = 'Global' }) end, desc = 'Global picker' },
