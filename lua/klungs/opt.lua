@@ -76,20 +76,6 @@ vim.opt.linebreak = true
 -- Jumplist
 vim.o.jumpoptions = 'stack'
 
--- Fold
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.opt.foldtext = ''
--- vim.opt.foldcolumn = '3'
-vim.opt.foldlevelstart = 99
-vim.opt.fillchars = {
-  eob = ' ',
-  fold = ' ',
-  foldclose = '',
-  foldopen = '',
-  foldsep = ' ',
-}
-
 -- Cmdline completion (as fallback in case blink completion is disabled)
 vim.opt.wildmode = 'longest:full,full'
 

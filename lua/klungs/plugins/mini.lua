@@ -80,7 +80,7 @@ return {
         U = ai.gen_spec.function_call({ name_pattern = '[%w_]' }), -- without dot in function name
       },
     })
-    require('klungs.util').on_load('which-key.nvim', function() vim.schedule(ai_whichkey) end)
+    require('klungs.utils').on_load('which-key.nvim', function() vim.schedule(ai_whichkey) end)
     require('mini.extra').setup()
     require('mini.surround').setup({
       custom_surrounding = {

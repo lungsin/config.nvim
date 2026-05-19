@@ -88,7 +88,7 @@ return { -- LSP Configuration & Plugins
 
     -- Debian based systems are used for servers which ideally have minimal dependencies.
     -- Only install lsps and linters for non-debian based systems
-    local is_debian = require('klungs.util').is_debian_based()
+    local is_debian = require('klungs.utils.init').is_debian_based()
     require('mason-lspconfig').setup({
       automatic_enable = true,
       ensure_installed = not is_debian and {
