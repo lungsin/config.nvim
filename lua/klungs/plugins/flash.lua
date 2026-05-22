@@ -10,7 +10,8 @@ return {
     modes = {
       char = {
         highlight = {
-          backdrop = true,
+          backdrop = false,
+          autohide = true,
         },
       },
     },
