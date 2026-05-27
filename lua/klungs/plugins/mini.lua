@@ -60,10 +60,15 @@ end
 return {
   'nvim-mini/mini.nvim',
   version = false,
-  config = function(s, b)
+  config = function()
+    -- mini.ai
     local extra = require('mini.extra')
     local ai = require('mini.ai')
     ai.setup({
+      mappings = {
+        goto_left = 'gl',
+        goto_right = 'gn',
+      },
       custom_textobjects = {
         A = ai.gen_spec.treesitter({ a = '@parameter.outer', i = '@parameter.inner' }),
         c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }),
@@ -80,10 +85,30 @@ return {
         U = ai.gen_spec.function_call({ name_pattern = '[%w_]' }), -- without dot in function name
       },
     })
+    extra.setup()
     require('klungs.utils').on_load('which-key.nvim', function() vim.schedule(ai_whichkey) end)
-    require('mini.extra').setup()
+
+    -- mini.indentscope
+    -- TODO: consider creating custom textobject instead of using mini.indentscope or snacks.scope
+    if true then
+      require('mini.indentscope').setup({
+        -- Disable drawing, only use for the textobject and jump functionality
+        draw = {
+          predicate = function() return false end,
+        },
+        options = {
+          try_as_border = true,
+        },
+      })
+    end
+
+    -- mini.surround
     require('mini.surround').setup({
-      custom_surrounding = {
+      mappings = {
+        find = 'sn',
+        find_left = 'sl',
+      },
+      custom_surroundings = {
         -- Swap the default behaviour of the brackets to make it more consistent with mini.ai brackets textobject.
         -- Opening bracket doesn't include padding and closing bracket include padding.
         ['('] = { output = { left = '(', right = ')' } },
@@ -96,27 +121,12 @@ return {
         ['>'] = { output = { left = '< ', right = ' >' } },
       },
     })
+
+    -- mini.icons
     require('mini.icons').setup({
       extension = {
         ['jai'] = { glyph = 'J' },
       },
     })
-    -- require('mini.diff').setup({
-    --   view = {
-    --     style = 'sign',
-    --     signs = {
-    --       add = '▎',
-    --       change = '▎',
-    --       delete = '',
-    --     },
-    --   },
-    -- })
   end,
-  keys = {
-    -- {
-    --   '<leader>go',
-    --   function() require('mini.diff').toggle_overlay(0) end,
-    --   desc = 'Toggle mini.diff overlay',
-    -- },
-  },
 }

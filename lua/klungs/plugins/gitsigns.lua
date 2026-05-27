@@ -23,7 +23,7 @@ return {
           ---@diagnostic disable-next-line: param-type-mismatch
           gitsigns.nav_hunk('next')
         end
-      end, { desc = 'Jump to next git change' })
+      end, { desc = 'Next hunk' })
 
       map('n', '[c', function()
         if vim.wo.diff then
@@ -32,7 +32,7 @@ return {
           ---@diagnostic disable-next-line: param-type-mismatch
           gitsigns.nav_hunk('prev')
         end
-      end, { desc = 'Jump to previous git change' })
+      end, { desc = 'Prev hunk' })
 
       -- Actions
       map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Git Stage/Un-stage Hunk' })

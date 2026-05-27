@@ -21,9 +21,6 @@ local function get_lazygit_os_config()
   }
 end
 
----@type snacks.win?
-local lazygit_win = nil
-
 ---@type LazySpec
 return {
   'folke/snacks.nvim',
@@ -41,6 +38,32 @@ return {
       animate = { enabled = false },
       scope = { only_current = true },
     },
+    scope = {
+      -- Add textobject for indent, and keymaps for jump ]i and [i
+      -- Custom keymaps similar to mini.ai jump
+      -- TODO: consider creating custom indent textobjext instead of depending on snacks.scope or mini.indentscope
+      enabled = false,
+      keys = {
+        jump = {
+          ['gli'] = {
+            min_size = 1, -- allow single line scopes
+            bottom = false,
+            cursor = false,
+            edge = true,
+            treesitter = { blocks = { enabled = false } },
+            desc = 'jump to top edge of scope',
+          },
+          ['gni'] = {
+            min_size = 1, -- allow single line scopes
+            bottom = true,
+            cursor = false,
+            edge = true,
+            treesitter = { blocks = { enabled = false } },
+            desc = 'jump to bottom edge of scope',
+          },
+        },
+      },
+    },
     input = { enabled = true },
     notifier = {
       enabled = true,
@@ -55,7 +78,6 @@ return {
       enabled = true,
     },
     quickfile = { enabled = true },
-    scope = { enabled = true },
     terminal = { enabled = true },
     words = { enabled = true },
     styles = {
