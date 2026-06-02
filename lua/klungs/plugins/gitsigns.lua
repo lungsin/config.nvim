@@ -4,8 +4,11 @@ return {
   'lewis6991/gitsigns.nvim',
   enabled = true,
   opts = {
-    -- current_line_blame = true,
     gh = true,
+    current_line_blame = true,
+    current_line_blame_opts = {
+      delay = 0, -- Experimental: try to see if this is too much
+    },
     on_attach = function(bufnr)
       local gitsigns = require('gitsigns')
 
@@ -59,7 +62,7 @@ return {
 
       -- Blame line
       map('n', '<leader>hb', gitsigns.blame_line, { desc = 'Git blame line' })
-      map('n', '<leader>hB', function() gitsigns.blame_line({ full = true }) end, { desc = 'Git blama line (full)' })
+      map('n', '<leader>hB', function() gitsigns.blame_line({ full = true }) end, { desc = 'Git blame line (full)' })
 
       map('n', '<leader>hD', gitsigns.diffthis, { desc = 'Git diff against index' })
       map('n', '<leader>hd', function()
