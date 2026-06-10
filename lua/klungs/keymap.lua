@@ -8,9 +8,6 @@ vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
 -- Remap redo so that <c-r> can be used for other mappings
 vim.keymap.set('n', 'U', '<c-r>', { desc = 'Redo' })
 
--- Diagnostic keymaps
-vim.keymap.set('n', '<c-q>', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -25,6 +22,7 @@ vim.keymap.set('n', '<M-down>', '<c-w><down>', { desc = 'Focus window down' })
 
 -- Save buffer
 vim.keymap.set({ 'n', 'i' }, '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
+vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = 'Save buffer' })
 
 -- Scrolling
 vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Half-page scroll down and center cursor' })

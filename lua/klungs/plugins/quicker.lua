@@ -22,5 +22,8 @@ return {
   keys = {
     { '<leader>q', function() require('quicker').toggle() end, desc = 'Toggle quickfix' },
     { '<leader>l', function() require('quicker').toggle({}) end, desc = 'Toggle loclist' },
+    -- Diagnostic keymaps
+    -- vim.keymap.set('n', '<c-q>', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' }),
+    { '<c-q>', vim.diagnostic.setloclist, desc = 'Open diagnostic Quickfix list' },
   },
 }
