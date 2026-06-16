@@ -63,7 +63,7 @@ return {
       desc = 'Buffer Local Keymaps (which-key)',
     },
     {
-      '<c-w><space>',
+      '<leader>w',
       function() require('which-key').show({ keys = '<c-w>', loop = true }) end,
       desc = 'Window Hydra Mode (which-key)',
     },

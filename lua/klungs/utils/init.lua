@@ -37,4 +37,19 @@ function M.is_debian_based()
   end
 end
 
+--- Set keymap(s). Like `vim.keymap.set`, but `lhs` may be a string or an array of strings.
+---@param mode string|string[]
+---@param lhs string|string[]
+---@param rhs string|function
+---@param opts? vim.keymap.set.Opts
+function M.keymap_set(mode, lhs, rhs, opts)
+  if type(lhs) == 'table' then
+    for _, l in ipairs(lhs) do
+      vim.keymap.set(mode, l, rhs, opts)
+    end
+  else
+    vim.keymap.set(mode, lhs, rhs, opts)
+  end
+end
+
 return M

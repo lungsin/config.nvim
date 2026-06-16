@@ -1,3 +1,12 @@
+local opencode_cmd = 'opencode --port'
+---@type snacks.terminal.Opts
+local snacks_terminal_opts = {
+  win = {
+    position = 'right',
+    enter = false,
+  },
+}
+
 return {
   'NickvanDyke/opencode.nvim',
   dependencies = {
@@ -6,55 +15,68 @@ return {
   enabled = true,
   config = function()
     ---@type opencode.Opts
-    vim.g.opencode_opts = {}
+    vim.g.opencode_opts = {
+      server = {
+        start = function() require('snacks.terminal').open(opencode_cmd, snacks_terminal_opts) end,
+      },
+    }
 
     -- Required for `opts.events.reload`.
     vim.o.autoread = true
 
-    vim.keymap.set(
+    local keymap_set = require('klungs.utils').keymap_set
+
+    keymap_set(
       { 'n', 'x' },
-      '<c-k>', -- Using Cursor's mapping
+      -- '<c-k>', -- Using Cursor's mapping
+      '<c-a>',
       function()
         require('opencode').command('session.new')
-        require('opencode').ask('@this: ', { submit = true })
+        require('opencode').ask('@this: ')
       end,
       { desc = 'Ask opencode in new session' }
     )
-    vim.keymap.set(
-      { 'n', 'x' },
-      '<c-x>',
-      function() require('opencode').select() end,
-      { desc = 'Execute opencode action…' }
-    )
-    vim.keymap.set(
+    keymap_set(
       { 'n', 'x' },
       '<leader>aa',
+      function() require('opencode').ask('@this: ') end,
+      { desc = 'Ask opencode in new session' }
+    )
+
+    keymap_set(
+      { 'n', 'x' },
+      { '<c-x>', '<leader>ax' },
       function() require('opencode').select() end,
       { desc = 'Execute opencode action…' }
     )
-    vim.keymap.set({ 'n', 't' }, '<C-.>', function() require('opencode').toggle() end, { desc = 'Toggle opencode' })
-
-    vim.keymap.set(
-      { 'n', 'x' },
-      '<leader>ai',
-      function() return require('opencode').operator('@this \n') end,
-      { expr = true, desc = 'Add range to opencode' }
+    keymap_set(
+      { 'n', 't' },
+      '<C-.>',
+      function() require('snacks.terminal').toggle(opencode_cmd, snacks_terminal_opts) end,
+      { desc = 'Toggle opencode' }
     )
-    vim.keymap.set(
+
+    keymap_set(
+      { 'n', 'x' },
+      'go',
+      function() return require('opencode').operator('@this ') end,
+      { desc = 'Append range to OpenCode', expr = true }
+    )
+    keymap_set(
       'n',
-      '<leader>aii',
-      function() return require('opencode').operator('@this \n') .. '_' end,
-      { expr = true, desc = 'Add line to opencode' }
+      'goo',
+      function() return require('opencode').operator('@this ') .. '_' end,
+      { desc = 'Append line to OpenCode', expr = true }
     )
 
     -- Command: navigation
-    vim.keymap.set(
+    keymap_set(
       'n',
       '<S-C-u>',
       function() require('opencode').command('session.half.page.up') end,
       { desc = 'opencode half page up' }
     )
-    vim.keymap.set(
+    keymap_set(
       'n',
       '<S-C-d>',
       function() require('opencode').command('session.half.page.down') end,
@@ -62,16 +84,16 @@ return {
     )
 
     -- Command: Clear / Submit prompt
-    vim.keymap.set(
+    keymap_set(
       'n',
       '<leader>ac',
       function() require('opencode').command('prompt.clear') end,
       { desc = 'opencode clear prompt' }
     )
 
-    vim.keymap.set(
+    keymap_set(
       'n',
-      '<leader>as',
+      { '<leader>a<enter>', '<leader>as' },
       function() require('opencode').command('prompt.submit') end,
       { desc = 'opencode submit prompt' }
     )

@@ -65,8 +65,10 @@ return {
     local ai = require('mini.ai')
     ai.setup({
       mappings = {
-        goto_left = 'gl',
-        goto_right = 'gn',
+        -- around_next = 'aN',
+        -- inside_next = 'iN',
+        -- around_last = 'aL',
+        -- inside_last = 'iL',
       },
       custom_textobjects = {
         c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }),
@@ -107,8 +109,8 @@ return {
     -- mini.surround
     require('mini.surround').setup({
       mappings = {
-        find = 'sn',
-        find_left = 'sl',
+        find = 's]',
+        find_left = 's[',
       },
       custom_surroundings = {
         -- Swap the default behaviour of the brackets to make it more consistent with mini.ai brackets textobject.

@@ -14,21 +14,31 @@ vim.keymap.set('n', 'U', '<c-r>', { desc = 'Redo' })
 vim.keymap.set('t', '<Esc><Esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('t', '<c-esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
 
+-- Movement to handle word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- Window
 vim.keymap.set('n', '<M-left>', '<c-w><left>', { desc = 'Focus window left' })
 vim.keymap.set('n', '<M-right>', '<c-w><right>', { desc = 'Focus window right' })
 vim.keymap.set('n', '<M-up>', '<c-w><up>', { desc = 'Focus window up' })
 vim.keymap.set('n', '<M-down>', '<c-w><down>', { desc = 'Focus window down' })
 
+vim.keymap.set('n', '<M-S-left>', '<c-w><', { desc = 'Focus window left' })
+vim.keymap.set('n', '<M-S-right>', '<c-w>>', { desc = 'Focus window right' })
+vim.keymap.set('n', '<M-S-up>', '<c-w>+', { desc = 'Focus window up' })
+vim.keymap.set('n', '<M-S-down>', '<c-w>-', { desc = 'Focus window down' })
+
 -- Save buffer
 vim.keymap.set({ 'n', 'i' }, '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
-vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = 'Save buffer' })
 
 -- Scrolling
 vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Half-page scroll down and center cursor' })
 vim.keymap.set('n', '<c-u>', '<c-u>zz', { desc = 'Half-page scroll down and center cursor' })
 vim.keymap.set('n', '<c-e>', '10<c-e>')
 vim.keymap.set('n', '<c-y>', '10<c-y>')
+vim.keymap.set('n', '<c-s-e>', '<c-e>')
+vim.keymap.set('n', '<c-s-y>', '<c-y>')
 
 -- Visual mode
 -- Use <C-r> to insert the v:count1 to commandline mode

@@ -8,8 +8,8 @@ return {
     local neoscroll = require('neoscroll')
     local keymap = {
       -- scroll full page:
-      ['<C-b>'] = function() neoscroll.ctrl_b({ duration = 300 }) end, -- 450 default
-      ['<C-f>'] = function() neoscroll.ctrl_f({ duration = 300 }) end, -- 450 default
+      -- ['<C-b>'] = function() neoscroll.ctrl_b({ duration = 300 }) end, -- 450 default
+      -- ['<C-f>'] = function() neoscroll.ctrl_f({ duration = 300 }) end, -- 450 default
       --
       -- scroll half page:
       ['<C-u>'] = function() neoscroll.ctrl_u({ duration = 150 }) end, -- 250 default
