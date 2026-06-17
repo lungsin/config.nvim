@@ -7,6 +7,19 @@ local snacks_terminal_opts = {
   },
 }
 
+--- Open (or get) the opencode terminal, optionally hiding the window.
+--- The terminal/job is created on first call; on subsequent calls the
+--- existing instance is returned.
+---@param opts { show: boolean? }? When `show` is false, the terminal window is hidden after open.
+local function open_opencode_terminal(opts)
+  opts = opts or { show = false }
+  local win = require('snacks.terminal').open(opencode_cmd, snacks_terminal_opts)
+  if win and opts.show == false then
+    win:hide()
+  end
+  return win
+end
+
 return {
   'NickvanDyke/opencode.nvim',
   dependencies = {
@@ -17,7 +30,7 @@ return {
     ---@type opencode.Opts
     vim.g.opencode_opts = {
       server = {
-        start = function() require('snacks.terminal').open(opencode_cmd, snacks_terminal_opts) end,
+        start = function() open_opencode_terminal({ show = true }) end,
       },
     }
 
@@ -26,16 +39,21 @@ return {
 
     local keymap_set = require('klungs.utils').keymap_set
 
-    keymap_set(
-      { 'n', 'x' },
-      -- '<c-k>', -- Using Cursor's mapping
-      '<c-a>',
-      function()
-        require('opencode').command('session.new')
-        require('opencode').ask('@this: ')
+    -- Pre-start the opencode server on startup
+    vim.api.nvim_create_autocmd('VimEnter', {
+      group = vim.api.nvim_create_augroup('klungs_opencode_prewarm', { clear = true }),
+      callback = function()
+        -- Defer so it doesn't slow down UI paint on startup.
+        vim.defer_fn(function() open_opencode_terminal({ show = false }) end, 100)
       end,
-      { desc = 'Ask opencode in new session' }
-    )
+    })
+
+    -- Ask
+    keymap_set({ 'n', 'x' }, '<c-a>', function()
+      require('opencode').command('session.new')
+      require('opencode').ask('@this: ')
+    end, { desc = 'Ask opencode in new session' })
+
     keymap_set(
       { 'n', 'x' },
       '<leader>aa',
@@ -43,6 +61,7 @@ return {
       { desc = 'Ask opencode in new session' }
     )
 
+    -- Select actions
     keymap_set(
       { 'n', 'x' },
       { '<c-x>', '<leader>ax' },
@@ -56,6 +75,7 @@ return {
       { desc = 'Toggle opencode' }
     )
 
+    -- Operator to append ranges
     keymap_set(
       { 'n', 'x' },
       'go',
@@ -69,13 +89,14 @@ return {
       { desc = 'Append line to OpenCode', expr = true }
     )
 
-    -- Command: navigation
+    -- Navigation
     keymap_set(
       'n',
       '<S-C-u>',
       function() require('opencode').command('session.half.page.up') end,
       { desc = 'opencode half page up' }
     )
+
     keymap_set(
       'n',
       '<S-C-d>',
@@ -83,7 +104,7 @@ return {
       { desc = 'opencode half page down' }
     )
 
-    -- Command: Clear / Submit prompt
+    -- Clear / Submit prompt
     keymap_set(
       'n',
       '<leader>ac',
