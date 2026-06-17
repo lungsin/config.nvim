@@ -5,7 +5,7 @@
 return {
   'ibhagwan/fzf-lua',
   event = 'VimEnter',
-  enabled = true,
+  enabled = false,
   dependencies = {
     { 'nvim-mini/mini.nvim' },
   },
