@@ -4,6 +4,7 @@ return { -- LSP Configuration & Plugins
     'mason-org/mason.nvim',
     'mason-org/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
+    'b0o/SchemaStore.nvim', -- For yaml and json schema
 
     -- Dependencies to add capabilities into the lsp
     -- 'saghen/blink.cmp'
@@ -100,6 +101,7 @@ return { -- LSP Configuration & Plugins
         'lua_ls',
         'svelte',
         'postgres_lsp',
+        'yamlls',
       } or {},
     })
 
