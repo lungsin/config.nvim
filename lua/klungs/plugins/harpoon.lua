@@ -3,7 +3,16 @@ return {
   branch = 'harpoon2',
   config = function()
     local harpoon = require('harpoon')
-    harpoon:setup()
+    harpoon:setup({
+      default = {
+        create_list_item = function(config, item)
+          item = require('harpoon.config').get_default_config().default.create_list_item(config, item)
+          vim.notify('Harpoon: added ' .. item.value)
+          return item
+        end,
+      },
+    })
+    harpoon:extend(require('harpoon.extensions').builtins.highlight_current_file())
 
     local harpoon_add = function() harpoon:list():add() end
     local harpoon_list = function() harpoon.ui:toggle_quick_menu(harpoon:list()) end

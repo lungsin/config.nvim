@@ -22,6 +22,7 @@ end
 
 return {
   'NickvanDyke/opencode.nvim',
+  -- dir = '~/git/opencode.nvim',
   dependencies = {
     'folke/snacks.nvim', -- Requires input, picker, terminal modules (configured in snacks.lua)
   },
