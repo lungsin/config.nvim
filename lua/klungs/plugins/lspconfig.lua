@@ -93,14 +93,14 @@ return { -- LSP Configuration & Plugins
     require('mason-lspconfig').setup({
       automatic_enable = true,
       ensure_installed = not is_debian and {
-        'lua_ls',
+        'astro',
         'clangd',
+        'fish_lsp',
         'gopls',
-        'vtsls',
-        'eslint',
         'lua_ls',
-        'svelte',
+        'oxlint',
         'postgres_lsp',
+        'vtsls',
         'yamlls',
       } or {},
     })
@@ -108,13 +108,12 @@ return { -- LSP Configuration & Plugins
     -- Install formarters & linters
     require('mason-tool-installer').setup({
       ensure_installed = not is_debian and {
-        'stylua', -- Used to format lua code
-        -- 'clang-format',
-        'prettierd',
-        'prettier',
-        'eslint-lsp',
-        'tailwindcss',
+        'clang-format',
         'goimports',
+        'oxfmt',
+        'stylua', -- Used to format lua code
+        'tailwindcss',
+        'yamlfmt',
       } or {},
     })
 

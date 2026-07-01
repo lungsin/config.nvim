@@ -48,16 +48,11 @@ return { -- Autoformat
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- For FE stuff, we use rely on eslint instead. It's being setup on
-        -- the lsp side.
-        -- NOTE: Somehow the prettier formatter is quite slow and the prettierd
-        -- formatter is conflicting with the lsp code action due to it being async
-
-        -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        -- typescript = { 'prettierd', 'prettier', stop_after_first = true },
-        -- typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-        -- javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-        json = { 'prettierd', 'prettier', stop_after_first = true },
+        javascript = { 'oxfmt' },
+        typescript = { 'oxfmt' },
+        typescriptreact = { 'oxfmt' },
+        javascriptreact = { 'oxfmt' },
+        json = { 'oxfmt' },
         rust = { 'rustfmt' },
         go = { 'goimports', 'gofumpt' },
         c = { 'clang_format' },
