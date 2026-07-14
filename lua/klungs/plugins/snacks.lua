@@ -28,11 +28,11 @@ return {
   lazy = false,
   enabled = true,
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
+    'nvim-mini/mini.nvim',
   },
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = false },
+    bigfile = { enabled = true },
     indent = {
       enabled = true,
       animate = { enabled = false },
@@ -191,7 +191,12 @@ return {
     --
     -- { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
     -- { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
-    -- { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Delete Buffer with preserved layout' },
+    { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Delete Buffer with preserved layout' },
+    { '<leader>bo', function() Snacks.bufdelete.other() end, desc = 'Delete Other Buffer' },
+    { '<leader>bi', function() Snacks.bufdelete.invisible() end, desc = 'Delete Invisible Buffer' },
+    { '<leader>bD', '<cmd>bd<cr>', desc = 'Delete buffer and window' },
+    { '<leader>bb', '<cmd>e #<cr>', desc = 'Switch to Other Buffer' },
+    { '<leader>`', '<cmd>e #<cr>', desc = 'Switch to Other Buffer' },
     --
     -- { '<c-/>', function() Snacks.terminal() end, desc = 'Toggle Terminal', mode = { 'n', 't' } },
     -- { '<c-_>', function() Snacks.terminal() end, desc = 'which_key_ignore', mode = { 'n', 't' } },

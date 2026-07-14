@@ -61,8 +61,8 @@ return {
       map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = 'Toggle git show Deleted' })
 
       -- Blame line
-      map('n', '<leader>hb', gitsigns.blame_line, { desc = 'Git blame line' })
-      map('n', '<leader>hB', function() gitsigns.blame_line({ full = true }) end, { desc = 'Git blame line (full)' })
+      map('n', '<leader>hb', function() gitsigns.blame_line({ full = true }) end, { desc = 'Git blame line' })
+      map('n', '<leader>hB', function() gitsigns.blame() end, { desc = 'Git blame file' })
 
       map('n', '<leader>hD', gitsigns.diffthis, { desc = 'Git diff against index' })
       map('n', '<leader>hd', function()

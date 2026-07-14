@@ -51,6 +51,19 @@ vim.keymap.set('x', '<', '<gv', { desc = 'Indent selection left' })
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste and keep it available for further pasting' })
 vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete without changing clipboard' })
 
+-- Yank current buffer path to clipboard
+vim.keymap.set('n', '<leader>yp', function()
+  local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':.')
+  vim.fn.setreg('+', path)
+  vim.notify('Yanked: ' .. path)
+end, { desc = 'Yank relative buffer path' })
+
+vim.keymap.set('n', '<leader>yP', function()
+  local path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', path)
+  vim.notify('Yanked: ' .. path)
+end, { desc = 'Yank absolute buffer path' })
+
 -- Paste linewise before/after current line
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
 vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })

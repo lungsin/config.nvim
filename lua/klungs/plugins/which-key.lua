@@ -11,7 +11,7 @@ return {
     preset = 'helix',
     spec = {
       { '<leader>a', group = 'AI' },
-      { '<leader>b', group = 'Bookmark (Harpoon)' },
+      { '<leader>b', group = 'Buffer/Bookmark (Harpoon)' },
       { '<leader>f', group = 'File/Find' },
       { '<leader>g', group = 'Git' },
       { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
@@ -22,6 +22,7 @@ return {
       { '<leader>u', group = 'Editor/UI/Notification', icon = { icon = '󰙵 ', color = 'cyan' } },
       { '<leader>un', group = 'Notification', icon = { icon = '󰙵 ', color = 'cyan' } },
       { '<leader>Q', group = 'Session' },
+      { '<leader>y', group = 'Yank' },
       { 'g', group = 'goto' },
       { 'gr', group = 'lsp' },
       { 'z', group = 'fold' },
