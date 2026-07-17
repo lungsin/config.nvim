@@ -57,9 +57,9 @@ return {
 
     keymap_set(
       { 'n', 'x' },
-      '<leader>aa',
-      function() require('opencode').ask('@this: ') end,
-      { desc = 'Ask opencode in new session' }
+      '<c-s-a>',
+      function() require('opencode').ask() end,
+      { desc = 'Ask opencode in the current session' }
     )
 
     -- Select actions
