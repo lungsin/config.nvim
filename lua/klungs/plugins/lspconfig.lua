@@ -102,12 +102,14 @@ return { -- LSP Configuration & Plugins
         'postgres_lsp',
         'vtsls',
         'yamlls',
+        'ansiblels',
       } or {},
     })
 
     -- Install formarters & linters
     require('mason-tool-installer').setup({
       ensure_installed = not is_debian and {
+        'ansible-lint',
         'clang-format',
         'goimports',
         'oxfmt',
