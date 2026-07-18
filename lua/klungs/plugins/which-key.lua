@@ -12,6 +12,7 @@ return {
     spec = {
       { '<leader>a', group = 'AI' },
       { '<leader>b', group = 'Buffer/Bookmark (Harpoon)' },
+      { '<leader>c', group = 'Code editor' },
       { '<leader>f', group = 'File/Find' },
       { '<leader>g', group = 'Git' },
       { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },

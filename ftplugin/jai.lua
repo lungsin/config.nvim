@@ -3,3 +3,5 @@
 vim.lsp.enable('jails')
 
 vim.cmd('compiler jai')
+
+vim.bo.commentstring = '// %s'

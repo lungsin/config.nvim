@@ -61,6 +61,8 @@ return { -- Autoformat
         typescriptreact = { 'oxfmt' },
         javascriptreact = { 'oxfmt' },
         json = { 'oxfmt' },
+        jsonc = { 'oxfmt' },
+        hujson = { 'hujsonfmt' },
         rust = { 'rustfmt' },
         go = { 'goimports', 'gofumpt' },
         c = { 'clang_format' },
@@ -76,6 +78,9 @@ return { -- Autoformat
         end,
       },
       formatters = {
+        hujsonfmt = {
+          command = 'hujsonfmt',
+        },
         clang_format = {
           prepend_args = { '--style=file', '--fallback-style=LLVM' },
         },

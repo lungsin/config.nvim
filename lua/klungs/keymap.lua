@@ -30,7 +30,7 @@ vim.keymap.set('n', '<M-S-up>', '<c-w>+', { desc = 'Focus window up' })
 vim.keymap.set('n', '<M-S-down>', '<c-w>-', { desc = 'Focus window down' })
 
 -- Save buffer
-vim.keymap.set({ 'n', 'i' }, '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
+vim.keymap.set({ 'i', 'x', 'n', 's' }, '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
 
 -- Scrolling
 vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Half-page scroll down and center cursor' })
@@ -68,6 +68,10 @@ end, { desc = 'Yank absolute buffer path' })
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
 vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })
 vim.keymap.set('n', ']p', '<Cmd>exe "put "  . v:register<CR>', { desc = 'Paste Below' })
+
+-- commenting
+vim.keymap.set('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
+vim.keymap.set('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
 
 -- UI related stuff
 vim.keymap.set('n', '<leader>uw', function() vim.o.wrap = not vim.o.wrap end, { desc = 'Toggle line wrap' })
