@@ -132,5 +132,12 @@ return {
         ['jai'] = { glyph = 'J' },
       },
     })
+
+    -- mini.splitjoin
+    require('mini.splitjoin').setup({
+      mappings = {
+        toggle = 'S',
+      },
+    })
   end,
 }
