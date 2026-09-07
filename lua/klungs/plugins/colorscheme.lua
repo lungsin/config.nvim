@@ -15,6 +15,12 @@ return {
       require('catppuccin').setup({
         no_italic = true,
         auto_integrations = true,
+        custom_highlights = {
+          -- catppuccin gives these a solid background, which clashes with the
+          -- fg todo-comments.nvim paints on top of them
+          ['@comment.todo'] = { link = 'Comment' },
+          Todo = { link = 'Comment' },
+        },
       })
       SetupColor()
     end,
@@ -35,15 +41,6 @@ return {
     name = 'rose-pine',
     config = function()
       require('rose-pine').setup({})
-      SetupColor()
-    end,
-  },
-  {
-    'AlexvZyl/nordic.nvim',
-    priority = 1000,
-    enabled = false,
-    config = function()
-      require('nordic').load()
       SetupColor()
     end,
   },
