@@ -3,21 +3,36 @@
 
 local function is_fish_shell() return vim.o.shell:match('fish') ~= nil end
 
--- The following is the `nvim-remote` preset from lazygit config, with `--remote-tab` replaced with `--remote`
+-- The following is the `nvim-remote` preset from lazygit config, with `--remote-tab` replaced with
+-- `--remote`, and the `--remote-send "q"` (quits lazygit) replaced with hiding the snacks float.
 local function get_lazygit_os_config()
+  local hide = 'nvim --server "$NVIM" --remote-send "<Cmd>lua Snacks.lazygit()<CR>"'
+
   if is_fish_shell() then
     return {
-      edit = 'begin; if test -z "$NVIM"; nvim -- {{filename}}; else; nvim --server "$NVIM" --remote-send "q"; nvim --server "$NVIM" --remote {{filename}}; end; end',
-      editAtLine = 'begin; if test -z "$NVIM"; nvim +{{line}} -- {{filename}}; else; nvim --server "$NVIM" --remote-send "q"; nvim --server "$NVIM" --remote {{filename}}; nvim --server "$NVIM" --remote-send ":{{line}}<CR>"; end; end',
+      edit = 'begin; if test -z "$NVIM"; nvim -- {{filename}}; else; '
+        .. hide
+        .. '; nvim --server "$NVIM" --remote {{filename}}; end; end',
+      editAtLine = 'begin; if test -z "$NVIM"; nvim +{{line}} -- {{filename}}; else; '
+        .. hide
+        .. '; nvim --server "$NVIM" --remote {{filename}}; nvim --server "$NVIM" --remote-send ":{{line}}<CR>"; end; end',
       editAtLineAndWait = 'nvim +{{line}} {{filename}}',
-      openDirInEditor = 'begin; if test -z "$NVIM"; nvim -- {{dir}}; else; nvim --server "$NVIM" --remote-send "q"; nvim --server "$NVIM" --remote {{dir}}; end; end',
+      openDirInEditor = 'begin; if test -z "$NVIM"; nvim -- {{dir}}; else; '
+        .. hide
+        .. '; nvim --server "$NVIM" --remote {{dir}}; end; end',
     }
   end
   return {
-    edit = '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}})',
-    editAtLine = '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" &&  nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
+    edit = '[ -z "$NVIM" ] && (nvim -- {{filename}}) || ('
+      .. hide
+      .. ' && nvim --server "$NVIM" --remote {{filename}})',
+    editAtLine = '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || ('
+      .. hide
+      .. ' &&  nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
     editAtLineAndWait = 'nvim +{{line}} {{filename}}',
-    openDirInEditor = '[ -z "$NVIM" ] && (nvim -- {{dir}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{dir}})',
+    openDirInEditor = '[ -z "$NVIM" ] && (nvim -- {{dir}}) || ('
+      .. hide
+      .. ' && nvim --server "$NVIM" --remote {{dir}})',
   }
 end
 
