@@ -25,6 +25,8 @@ return {
         'gomod',
         'gosum',
         'html',
+        'jinja',
+        'jinja_inline',
         'lua',
         'luadoc',
         'markdown',
