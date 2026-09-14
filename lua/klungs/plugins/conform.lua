@@ -57,6 +57,7 @@ return { -- Autoformat
       formatters_by_ft = {
         lua = { 'stylua' },
         javascript = { 'oxfmt' },
+        toml = { 'taplo', stop_after_first = true },
         typescript = { 'oxfmt' },
         typescriptreact = { 'oxfmt' },
         javascriptreact = { 'oxfmt' },
@@ -83,6 +84,14 @@ return { -- Autoformat
         },
         clang_format = {
           prepend_args = { '--style=file', '--fallback-style=LLVM' },
+        },
+        taplo = {
+          -- Taplo options are only settable via CLI flags (or a .taplo.toml),
+          -- they must come after the `format` subcommand.
+          args = {
+            'format',
+            '-',
+          },
         },
         ['jai-format'] = {
           command = 'jai-format',

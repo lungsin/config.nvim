@@ -103,6 +103,7 @@ return { -- LSP Configuration & Plugins
         'vtsls',
         'yamlls',
         'ansiblels',
+        'pyrefly',
       } or {},
     })
 
