@@ -1,4 +1,4 @@
-local opencode_cmd = 'opencode --port'
+local opencode_cmd = 'opencode'
 ---@type snacks.terminal.Opts
 local snacks_terminal_opts = {
   win = {
@@ -10,15 +10,46 @@ local snacks_terminal_opts = {
 --- Open (or get) the opencode terminal, optionally hiding the window.
 --- The terminal/job is created on first call; on subsequent calls the
 --- existing instance is returned.
----@param opts { show: boolean? }? When `show` is false, the terminal window is hidden after open.
+---@param opts { show: boolean? }? Show the terminal; newly created terminals default to hidden.
 local function open_opencode_terminal(opts)
   opts = opts or { show = false }
-  local win = require('snacks.terminal').open(opencode_cmd, snacks_terminal_opts)
-  if win and opts.show == false then
-    win:hide()
+  local win, created = require('snacks.terminal').get(opencode_cmd, snacks_terminal_opts)
+  if win then
+    if opts.show then
+      win:show()
+    elseif created then
+      win:hide()
+    end
   end
   return win
 end
+
+--- Send keys directly to the OpenCode TUI.
+--- OpenCode V2 removed the TUI control API previously used by `opencode.command()`.
+---@param keys string
+local function send_opencode_keys(keys)
+  local win = open_opencode_terminal({ show = false })
+  if not win then
+    return
+  end
+
+  local channel = vim.api.nvim_get_option_value('channel', { buf = win.buf })
+  if channel == 0 then
+    vim.notify('OpenCode terminal is not running', vim.log.levels.ERROR)
+    return
+  end
+
+  vim.api.nvim_chan_send(channel, keys)
+end
+
+-- OpenCode V2 default CLI keybindings. Alt is encoded as an escape prefix.
+local opencode_keys = {
+  session_new = string.char(24) .. 'n', -- <C-x>n
+  session_half_page_up = string.char(27, 21), -- <C-M-u>
+  session_half_page_down = string.char(27, 4), -- <C-M-d>
+  prompt_clear = string.char(3), -- <C-c>
+  prompt_submit = string.char(13), -- <CR>
+}
 
 return {
   'NickvanDyke/opencode.nvim',
@@ -40,7 +71,7 @@ return {
 
     local keymap_set = require('klungs.utils').keymap_set
 
-    -- Pre-start the opencode server on startup
+    -- Pre-start the OpenCode TUI on startup
     vim.api.nvim_create_autocmd('VimEnter', {
       group = vim.api.nvim_create_augroup('klungs_opencode_prewarm', { clear = true }),
       callback = function()
@@ -51,7 +82,7 @@ return {
 
     -- Ask
     keymap_set({ 'n', 'x' }, '<c-a>', function()
-      require('opencode').command('session.new')
+      send_opencode_keys(opencode_keys.session_new)
       require('opencode').ask('@this: ')
     end, { desc = 'Ask opencode in new session' })
 
@@ -59,7 +90,7 @@ return {
       { 'n', 'x' },
       '<c-s-a>',
       function() require('opencode').ask() end,
-      { desc = 'Ask opencode in the current session' }
+      { desc = 'Ask opencode in the latest session' }
     )
 
     -- Select actions
@@ -76,32 +107,32 @@ return {
       { desc = 'Toggle opencode' }
     )
 
-    -- Operator to append ranges
+    -- Operator to send ranges
     keymap_set(
       { 'n', 'x' },
       'go',
-      function() return require('opencode').operator('@this ') end,
-      { desc = 'Append range to OpenCode', expr = true }
+      function() return require('opencode').operator('@this') end,
+      { desc = 'Send range to OpenCode', expr = true }
     )
     keymap_set(
       'n',
       'goo',
-      function() return require('opencode').operator('@this ') .. '_' end,
-      { desc = 'Append line to OpenCode', expr = true }
+      function() return require('opencode').operator('@this') .. '_' end,
+      { desc = 'Send line to OpenCode', expr = true }
     )
 
     -- Navigation
     keymap_set(
       'n',
       '<S-C-u>',
-      function() require('opencode').command('session.half.page.up') end,
+      function() send_opencode_keys(opencode_keys.session_half_page_up) end,
       { desc = 'opencode half page up' }
     )
 
     keymap_set(
       'n',
       '<S-C-d>',
-      function() require('opencode').command('session.half.page.down') end,
+      function() send_opencode_keys(opencode_keys.session_half_page_down) end,
       { desc = 'opencode half page down' }
     )
 
@@ -109,14 +140,14 @@ return {
     keymap_set(
       'n',
       '<leader>ac',
-      function() require('opencode').command('prompt.clear') end,
+      function() send_opencode_keys(opencode_keys.prompt_clear) end,
       { desc = 'opencode clear prompt' }
     )
 
     keymap_set(
       'n',
       { '<leader>a<enter>', '<leader>as' },
-      function() require('opencode').command('prompt.submit') end,
+      function() send_opencode_keys(opencode_keys.prompt_submit) end,
       { desc = 'opencode submit prompt' }
     )
 
