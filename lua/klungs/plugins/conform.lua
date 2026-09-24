@@ -65,7 +65,7 @@ return { -- Autoformat
         jsonc = { 'oxfmt' },
         hujson = { 'hujsonfmt' },
         rust = { 'rustfmt' },
-        go = { 'goimports', 'gofumpt' },
+        go = { 'golangci-lint' },
         c = { 'clang_format' },
         cpp = { 'clang_format' },
         jai = function(bufnr)
