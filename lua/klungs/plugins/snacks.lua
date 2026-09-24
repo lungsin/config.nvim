@@ -150,7 +150,8 @@ return {
     { '<leader>fb', function() Snacks.picker.buffers({ sort_lastused = true }) end, desc = 'Buffers' },
     { '<leader>fg', function() Snacks.picker.git_files() end, desc = 'Find Git Files' },
     { '<leader>fp', function() Snacks.picker.projects() end, desc = 'Projects' },
-    { '<leader>fr', function() Snacks.picker.recent() end, desc = 'recent' },
+    { '<leader>fr', function() Snacks.picker.recent() end, desc = 'Recent' },
+    { '<leader>fu', function() Snacks.picker.buffers({ modified = true }) end, desc = 'Unsaved Buffers' },
     -- grep
     { '<leader>sb', function() Snacks.picker.lines() end, desc = 'Current Buffer Lines' },
     { '<leader>sB', function() Snacks.picker.grep_buffers() end, desc = 'Grep Open Buffers' },
@@ -209,6 +210,7 @@ return {
     { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Delete Buffer with preserved layout' },
     { '<leader>bo', function() Snacks.bufdelete.other() end, desc = 'Delete Other Buffer' },
     { '<leader>bi', function() Snacks.bufdelete.invisible() end, desc = 'Delete Invisible Buffer' },
+    { '<leader>bu', function() Snacks.picker.buffers({ modified = true }) end, desc = 'Unsaved Buffers' },
     { '<leader>bD', '<cmd>bd<cr>', desc = 'Delete buffer and window' },
     { '<leader>bb', '<cmd>e #<cr>', desc = 'Switch to Other Buffer' },
     { '<leader>`', '<cmd>e #<cr>', desc = 'Switch to Other Buffer' },
