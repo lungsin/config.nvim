@@ -95,6 +95,7 @@ return { -- LSP Configuration & Plugins
       ensure_installed = not is_debian and {
         'astro',
         'clangd',
+        'eslint',
         'fish_lsp',
         'gopls',
         'lua_ls',
@@ -121,13 +122,13 @@ return { -- LSP Configuration & Plugins
     })
 
     -- Setup code action to fix all fixable errors. Mainly for eslint.
-    -- vim.api.nvim_create_autocmd('BufWritePre', {
-    --   callback = function()
-    --     vim.lsp.buf.code_action({
-    --       apply = true,
-    --       context = { only = { 'source.fixAll' } },
-    --     })
-    --   end,
-    -- })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      callback = function()
+        vim.lsp.buf.code_action({
+          apply = true,
+          context = { only = { 'source.fixAll' } },
+        })
+      end,
+    })
   end,
 }
