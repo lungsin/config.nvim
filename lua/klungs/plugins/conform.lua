@@ -68,6 +68,7 @@ return { -- Autoformat
         go = { 'golangci-lint' },
         c = { 'clang_format' },
         cpp = { 'clang_format' },
+        sql = { 'pg_format' },
         jai = function(bufnr)
           -- Don't enable formatter if it's inside the compiler/stdlib path.
           local jai_path = vim.env.JAI_PATH or vim.fn.expand('~/jai/jai')
@@ -92,6 +93,13 @@ return { -- Autoformat
             'format',
             '-',
           },
+        },
+        pg_format = {
+          -- pg_format reads ./.pg_format from its working directory.
+          cwd = require('conform.util').root_file({ '.pg_format' }),
+          -- pg_format uses perl Text.Wrap which by default enable unexpand to replace 8 spaces to a tab.
+          -- This line disable such feature.
+          env = { PERL5OPT = '-MText::Wrap;$Text::Wrap::unexpand=0' },
         },
         ['jai-format'] = {
           command = 'jai-format',
