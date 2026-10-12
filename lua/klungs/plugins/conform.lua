@@ -68,7 +68,7 @@ return { -- Autoformat
         go = { 'golangci-lint' },
         c = { 'clang_format' },
         cpp = { 'clang_format' },
-        sql = { 'pg_format' },
+        sql = { 'sqruff' },
         jai = function(bufnr)
           -- Don't enable formatter if it's inside the compiler/stdlib path.
           local jai_path = vim.env.JAI_PATH or vim.fn.expand('~/jai/jai')
@@ -80,6 +80,10 @@ return { -- Autoformat
         end,
       },
       formatters = {
+        sqruff = {
+          args = { 'fix', '--stdin-filename', '$FILENAME', '-' },
+          stdin = true,
+        },
         hujsonfmt = {
           command = 'hujsonfmt',
         },

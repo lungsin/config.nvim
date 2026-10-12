@@ -115,7 +115,7 @@ return { -- LSP Configuration & Plugins
         'clang-format',
         'goimports',
         'oxfmt',
-        'pg_formatter',
+        'sqruff',
         'stylua', -- Used to format lua code
         'tailwindcss',
         'yamlfmt',
