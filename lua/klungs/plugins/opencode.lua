@@ -57,7 +57,7 @@ return {
   dependencies = {
     'folke/snacks.nvim', -- Requires input, picker, terminal modules (configured in snacks.lua)
   },
-  enabled = true,
+  enabled = false,
   config = function()
     ---@type opencode.Opts
     vim.g.opencode_opts = {
