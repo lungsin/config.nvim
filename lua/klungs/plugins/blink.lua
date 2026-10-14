@@ -16,7 +16,8 @@ return {
     -- see the "default configuration" section below for full documentation on how to define
     -- your own keymap.
     keymap = {
-      preset = 'default',
+      preset = 'super-tab',
+      ['<C-y>'] = { 'select_and_accept', 'fallback' },
       ['<C-l>'] = { 'snippet_forward', 'fallback' },
       ['<C-h>'] = { 'snippet_backward', 'fallback' },
     },
@@ -48,14 +49,17 @@ return {
           },
         },
       },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 200,
+      },
     },
+
     cmdline = {
       enabled = true,
       completion = {
-        list = {
-          selection = {
-            auto_insert = false,
-          },
+        menu = {
+          auto_show = function() return vim.fn.getcmdtype() == ':' end,
         },
       },
     },
@@ -82,6 +86,8 @@ return {
     },
 
     -- experimental signature help support
+    -- TODO: consider using lsp signature help, code ref from Maria Solos:
+    --    - https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/lsp.lua
     signature = { enabled = true },
   },
 
