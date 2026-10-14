@@ -25,5 +25,6 @@ return {
     -- Diagnostic keymaps
     -- { '<c-q>', vim.diagnostic.setloclist, desc = 'Open diagnostic Quickfix list' },
     { '<leader>cd', vim.diagnostic.open_float, desc = 'Line Diagnostics' },
+    { '<leader>ud', vim.diagnostic.open_float, desc = 'Line Diagnostics' },
   },
 }

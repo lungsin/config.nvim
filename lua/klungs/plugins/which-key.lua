@@ -11,7 +11,7 @@ return {
     preset = 'helix',
     spec = {
       { '<leader>a', group = 'AI' },
-      { '<leader>b', group = 'Buffer/Bookmark (Harpoon)' },
+      -- { '<leader>b', group = 'Buffer/Bookmark (Harpoon)' },
       { '<leader>c', group = 'Code editor' },
       { '<leader>f', group = 'File/Find' },
       { '<leader>g', group = 'Git' },
@@ -31,7 +31,6 @@ return {
       -- better descriptions
       { 'gx', desc = 'Open with system app' },
       { 'grx', desc = 'Codelens' },
-      { '<leader>d', hidden = true },
       -- Better description for square brackets motion
       { '[', group = 'Prev' },
       { ']', group = 'Next' },

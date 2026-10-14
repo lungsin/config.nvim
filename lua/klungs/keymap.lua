@@ -47,10 +47,6 @@ vim.keymap.set('x', 'K', [[:m '<-<C-r>=v:count1+1<CR><CR>gv=gv]], { desc = 'Move
 vim.keymap.set('x', '>', '>gv', { desc = 'Indent selection right' })
 vim.keymap.set('x', '<', '<gv', { desc = 'Indent selection left' })
 
--- Copy/Cut/Paste quality of life
-vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste and keep it available for further pasting' })
-vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete without changing clipboard' })
-
 -- Yank current buffer path to clipboard
 vim.keymap.set('n', '<leader>yp', function()
   local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':.')

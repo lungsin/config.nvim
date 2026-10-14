@@ -124,7 +124,16 @@ return { -- LSP Configuration & Plugins
 
     -- Setup code action to fix all fixable errors. Mainly for eslint.
     vim.api.nvim_create_autocmd('BufWritePre', {
-      callback = function()
+      -- Do not do anything if no client is attached
+      callback = function(event)
+        local clients = vim.lsp.get_clients({
+          bufnr = event.buf,
+          method = vim.lsp.protocol.Methods.textDocument_codeAction,
+        })
+        if #clients == 0 then
+          return
+        end
+
         vim.lsp.buf.code_action({
           apply = true,
           context = { only = { 'source.fixAll' } },
