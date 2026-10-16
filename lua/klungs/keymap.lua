@@ -60,6 +60,25 @@ vim.keymap.set('n', '<leader>yP', function()
   vim.notify('Yanked: ' .. path)
 end, { desc = 'Yank absolute buffer path' })
 
+vim.keymap.set('n', '<leader>yl', function()
+  local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':.')
+  local location = string.format('%s:%d', path, vim.fn.line('.'))
+  vim.fn.setreg('+', location)
+  vim.notify('Yanked: ' .. location)
+end, { desc = 'Yank cursor location' })
+
+vim.keymap.set('x', '<leader>yl', function()
+  local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':.')
+  local s, e = vim.fn.line('v'), vim.fn.line('.')
+  if s > e then
+    s, e = e, s
+  end
+  local location = s == e and string.format('%s:%d', path, s) or string.format('%s:%d-%d', path, s, e)
+  vim.fn.setreg('+', location)
+  vim.notify('Yanked: ' .. location)
+  vim.api.nvim_feedkeys(vim.keycode('<esc>'), 'n', false)
+end, { desc = 'Yank selection range' })
+
 -- Paste linewise before/after current line
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
 vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })
