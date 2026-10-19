@@ -18,6 +18,10 @@ vim.keymap.set('t', '<c-esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Arrow keys move by display line for small counts, by real line for large counts
+vim.keymap.set({ 'n', 'x' }, '<up>', "v:count < 5 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<down>', "v:count < 5 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- Window
 vim.keymap.set('n', '<M-left>', '<c-w><left>', { desc = 'Focus window left' })
 vim.keymap.set('n', '<M-right>', '<c-w><right>', { desc = 'Focus window right' })
