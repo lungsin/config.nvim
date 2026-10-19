@@ -4,6 +4,12 @@ return {
   'esmuellert/codediff.nvim',
   cmd = 'CodeDiff',
   opts = {
+    explorer = {
+      view_mode = 'tree',
+    },
+    history = {
+      view_mode = 'tree',
+    },
     keymaps = {
       view = {
         next_file = '<C-Down>',
