@@ -95,6 +95,15 @@ return {
     quickfile = { enabled = true },
     terminal = { enabled = true },
     words = { enabled = true },
+    zen = {
+      toggles = { dim = false },
+      win = {
+        width = 120,
+        col = 0, -- left-aligned instead of centered
+        -- Opaque backdrop matching Normal bg (blend = 100 would disable the backdrop entirely)
+        backdrop = { transparent = false, blend = 99 },
+      },
+    },
     styles = {
       notification = {
         -- wo = { wrap = true }, -- Wrap notifications
@@ -204,6 +213,8 @@ return {
     -- Other
     { '<leader>unh', function() Snacks.notifier.show_history() end, desc = 'Notification History' },
     { '<leader>und', function() Snacks.notifier.hide() end, desc = 'Dismiss All Notifications' },
+    { '<leader>z', function() Snacks.zen() end, desc = 'Toggle Zen Mode' },
+    { '<leader>Z', function() Snacks.zen.zoom() end, desc = 'Toggle Zoom' },
     --
     -- { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
     -- { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
