@@ -89,6 +89,9 @@ vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste A
 vim.keymap.set('n', ']p', '<Cmd>exe "put "  . v:register<CR>', { desc = 'Paste Below' })
 
 -- commenting
+vim.keymap.set('n', '<c-/>', 'gcc', { remap = true, desc = 'Toggle Comment' })
+vim.keymap.set('x', '<c-/>', 'gc', { remap = true, desc = 'Toggle Comment' })
+vim.keymap.set('o', '<c-/>', 'gc', { remap = true, desc = 'Comment textobject' })
 vim.keymap.set('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
 vim.keymap.set('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
 

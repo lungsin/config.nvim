@@ -17,9 +17,6 @@ return {
     },
   },
   keys = {
-    -- Experimental keybind: the idea is that this jump movement is very similar with search bind /
-    { '<c-/>', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash' },
-    { '<c-s-/>', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter' },
     -- Helix keybinding
     { 'gs', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash' },
     { 'gz', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter' },
