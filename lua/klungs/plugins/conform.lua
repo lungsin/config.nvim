@@ -14,11 +14,8 @@ return { -- Autoformat
     {
       '<leader>uf',
       function()
-        if vim.b.disable_autoformat then
-          vim.b.disable_autoformat = false
-        else
-          vim.b.disable_autoformat = true
-        end
+        vim.b.disable_autoformat = not vim.b.disable_autoformat
+        vim.notify('Auto format ' .. (vim.b.disable_autoformat and 'disabled' or 'enabled') .. ' (buffer)')
       end,
       mode = '',
       desc = 'Toggle Auto Format',
