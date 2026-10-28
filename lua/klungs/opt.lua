@@ -90,5 +90,9 @@ vim.opt.guicursor = table.concat({
   't:ver25-blinkon500-blinkoff500-TermCursor',
 }, ',')
 
+-- Show the current project directory in the terminal tab title
+vim.opt.title = true
+vim.opt.titlestring = "nvim | %{fnamemodify(getcwd(), ':t')}"
+
 -- Session
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
