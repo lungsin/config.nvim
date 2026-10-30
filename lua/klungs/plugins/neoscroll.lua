@@ -3,7 +3,8 @@ return {
   'karb94/neoscroll.nvim',
   event = { 'BufRead', 'InsertEnter' },
   -- Disable neoscroll when neovide is enabled to avoid conflicts
-  enabled = not vim.g.neovide,
+  -- enabled = not vim.g.neovide,
+  enabled = false,
   config = function()
     local neoscroll = require('neoscroll')
     local keymap = {

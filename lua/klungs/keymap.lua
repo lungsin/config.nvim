@@ -36,13 +36,16 @@ vim.keymap.set('n', '<M-S-down>', '<c-w>-', { desc = 'Focus window down' })
 -- Save buffer
 vim.keymap.set({ 'i', 'x', 'n', 's' }, '<c-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
 
--- Scrolling
-vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Half-page scroll down and center cursor' })
-vim.keymap.set('n', '<c-u>', '<c-u>zz', { desc = 'Half-page scroll down and center cursor' })
-vim.keymap.set('n', '<c-e>', '7<c-e>')
-vim.keymap.set('n', '<c-y>', '7<c-y>')
-vim.keymap.set('n', '<c-s-e>', '7<c-e>7j')
-vim.keymap.set('n', '<c-s-y>', '7<c-y>7k')
+-- Scrolling: counts multiply the step
+local function scroll(lines, key)
+  return function() vim.cmd('normal! ' .. vim.v.count1 * lines .. vim.keycode(key)) end
+end
+vim.keymap.set({ 'n', 'x' }, '<c-d>', scroll(16, '<c-d>'), { desc = 'Scroll down' })
+vim.keymap.set({ 'n', 'x' }, '<c-u>', scroll(16, '<c-u>'), { desc = 'Scroll up' })
+vim.keymap.set({ 'n', 'x' }, '<c-e>', scroll(8, '<c-e>'), { desc = 'Scroll down (keep cursor)' })
+vim.keymap.set({ 'n', 'x' }, '<c-y>', scroll(8, '<c-y>'), { desc = 'Scroll up (keep cursor)' })
+vim.keymap.set({ 'n', 'x' }, '<c-s-e>', scroll(8, '<c-d>'), { desc = 'Scroll down (move cursor)' })
+vim.keymap.set({ 'n', 'x' }, '<c-s-y>', scroll(8, '<c-u>'), { desc = 'Scroll up (move cursor)' })
 
 -- Visual mode
 -- Use <C-r> to insert the v:count1 to commandline mode
